@@ -77,3 +77,6 @@ typings/
 
 #batch file
 *.bat
+
+#Data folder
+data/
