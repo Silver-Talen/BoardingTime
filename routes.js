@@ -1,4 +1,4 @@
-ar mongoose = require('mongoose');
+var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
     useNewUrlParser: true
@@ -87,3 +87,4 @@ exports.details = function(req, res){
             person: person
         });
     });
+}
