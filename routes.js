@@ -10,19 +10,29 @@ mdb.once('open', function(callback){
 
 });
 
-var personSchema = mongoose.Schema({
-    name: String,
-    age: String,
-    species: String
+var accountSchema = mongoose.Schema({
+    username: String,
+    avatar: Image,
+    password: String,
+    userLevel: String,
+    email: String,
+    age: String
 });
 
-var Person = mongoose.model('People_Collection', personSchema);
+var messageSchema = mongoose.Schema({
+    name: String,
+    avatar: Image,
+    date: Date
+});
+
+var Account = mongoose.model('Account_Collection', accountSchema);
+var Message = mongoose.Model('Message_Collection', messageSchema);
 
 exports.index = function(req, res){
-    Person.find(function(err, person){
+    Account.find(function(err, person){
         if(err) return console.error(err);
         res.render('index', {
-            title: 'People List',
+            title: 'Account List',
             people: person
         });
     });
@@ -35,7 +45,7 @@ exports.create = function(req, res){
 }
 
 exports.createPerson = function(req, res){
-    var person = new Person({
+    var person = new Account({
         name: req.body.name,
         age: req.body.age,
         species: req.body.species
@@ -48,7 +58,7 @@ exports.createPerson = function(req, res){
 }
 
 exports.edit = function(req, res){
-    Person.findById(req.params.id, function(err, person){
+    Account.findById(req.params.id, function(err, person){
         if(err) return console.error(err);
         res.render('edit', {
             title: 'Edit',
@@ -58,7 +68,7 @@ exports.edit = function(req, res){
 }
 
 exports.editPerson = function(req, res){
-    Person.findById(req.params.id, function(err, person){
+    Account.findById(req.params.id, function(err, person){
         if(err) return console.error(err);
         person.name = req.body.name;
         person.age = req.body.age;
@@ -72,14 +82,14 @@ exports.editPerson = function(req, res){
 }
 
 exports.delete = function(req, res){
-    Person.findByIdAndRemove(req.params.id, function(err, person){
+    Account.findByIdAndRemove(req.params.id, function(err, person){
         if(err) return console.error(err);
         res.redirect('/');
     });
 }
 
 exports.details = function(req, res){
-    Person.findById(req.params.id, function(err, person){
+    Account.findById(req.params.id, function(err, person){
         if(err) return console.error(err);
         res.render('details', {
             title: 'Details',
