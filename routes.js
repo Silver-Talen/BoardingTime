@@ -1,4 +1,6 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
+    bcrypt = require('bcrypt-nodejs');
+
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
     useNewUrlParser: true
@@ -45,10 +47,14 @@ exports.create = function(req, res){
 }
 
 exports.createPerson = function(req, res){
+    var hash = bcrypt.hashSync(req.body.password);
     var person = new Account({
-        name: req.body.name,
+        username: req.body.username,
         age: req.body.age,
-        species: req.body.species
+        password: hash,
+        userLevel: req.body.userLevel,
+        email: req.body.email,
+        avatar: req.body.avatar
     });
     person.save(function(err, person){
         if(err) return console.error(err),
