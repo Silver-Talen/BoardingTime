@@ -24,8 +24,11 @@ var accountSchema = mongoose.Schema({
 });
 
 var messageSchema = mongoose.Schema({
-    name: String,
-    avatar: String,
+    username: String,
+    avatar_eyes: String,
+    avatar_nose: String,
+    avatar_mouth: String,
+    avatar_color: String,
     date: Date
 });
 
