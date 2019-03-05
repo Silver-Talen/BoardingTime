@@ -14,7 +14,7 @@ mdb.once('open', function(callback){
 
 var accountSchema = mongoose.Schema({
     username: String,
-    avatar: Image,
+    avatar: String,
     password: String,
     userLevel: String,
     email: String,
@@ -23,7 +23,7 @@ var accountSchema = mongoose.Schema({
 
 var messageSchema = mongoose.Schema({
     name: String,
-    avatar: Image,
+    avatar: String,
     date: Date
 });
 
