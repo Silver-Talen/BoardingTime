@@ -28,7 +28,7 @@ var messageSchema = mongoose.Schema({
 });
 
 var Account = mongoose.model('Account_Collection', accountSchema);
-var Message = mongoose.Model('Message_Collection', messageSchema);
+var Message = mongoose.model('Message_Collection', messageSchema);
 
 exports.index = function(req, res){
     Account.find(function(err, person){
