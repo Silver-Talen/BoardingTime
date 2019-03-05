@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    form(id='form', method='post', action='/create')
+        label Username:
+        input(type='text', name='name')
+        br
+        label Email:
+        input(type='text', name='email');
+        br
+        label Password:
+        input(type='text', name='password');
+        br
+        label Age:
+        input(type="text", name='age')
+        br
+        label Avatar Eyes:
+        select(name='avatar_eyes')
+            option(value='eyes_1') Eyes 1
+            option(value='eyes_2') Eyes 2
+            option(value='eyes_3') Eyes 3
+            option(value='eyes_4') Eyes 4
+        br
+        label Avatar Mouth:
+        select(name='avatar_mouth')
+            option(value='mouth_1') Mouth 1
+            option(value='mouth_2') Mouth 2
+            option(value='mouth_3') Mouth 3
+            option(value='mouth_4') Mouth 4
+        br
+        label Avatar Nose:
+        select(name='avatar_nose')
+            option(value='nose_1') Nose 1
+            option(value='nose_2') Nose 2
+            option(value='nose_3') Nose 3
+            option(value='nose_4') Nose 4
+        br
+        input(type='submit', value='Add Person')

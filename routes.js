@@ -14,7 +14,9 @@ mdb.once('open', function(callback){
 
 var accountSchema = mongoose.Schema({
     username: String,
-    avatar: String,
+    avatar_eyes: String,
+    avatar_nose: String,
+    avatar_mouth: String,
     password: String,
     userLevel: String,
     email: String,
@@ -54,7 +56,9 @@ exports.createPerson = function(req, res){
         password: hash,
         userLevel: req.body.userLevel,
         email: req.body.email,
-        avatar: req.body.avatar
+        avatar_eyes: req.body.avatar.avatar_eyes,
+        avatar_nose: req.body.avatar.avatar_nose,
+        avatar_mouth: req.body.avatar.avatar_mouth
     });
     person.save(function(err, person){
         if(err) return console.error(err),
@@ -74,12 +78,12 @@ exports.edit = function(req, res){
 }
 
 exports.editPerson = function(req, res){
-    Account.findById(req.params.id, function(err, person){
+    Account.findById(req.params.id, function(err, account){
         if(err) return console.error(err);
-        person.name = req.body.name;
-        person.age = req.body.age;
-        person.species = req.body.species;
-        person.save(function(err, person){
+        //edit avatar
+        //edit password
+        //edit username
+        account.save(function(err, person){
             if(err) return console.error(err);
             console.log(req.body.name + " updated");
         });
@@ -88,19 +92,19 @@ exports.editPerson = function(req, res){
 }
 
 exports.delete = function(req, res){
-    Account.findByIdAndRemove(req.params.id, function(err, person){
+    Account.findByIdAndRemove(req.params.id, function(err, account){
         if(err) return console.error(err);
         res.redirect('/');
     });
 }
 
 exports.details = function(req, res){
-    Account.findById(req.params.id, function(err, person){
+    Account.findById(req.params.id, function(err, account){
         if(err) return console.error(err);
         res.render('details', {
             title: 'Details',
             id: req.params.id,
-            person: person
+            account: account
         });
     });
 }
