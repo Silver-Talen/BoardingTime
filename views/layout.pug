@@ -1,5 +1,14 @@
 doctype html
 html
-  head
-  body
+    head
+        link(href='style.css' rel='stylesheet')
+    body
+        nav
+            ul(class='menu')
+                    a(href='/')
+                        li(id='Home') #{'Home'}
+                    a(href='/login')
+                        li(id='login') #{'Login'}
+                    a(href='/sign_up')
+                        li(id='sign_up') #{'Sign Up'}
     block content
