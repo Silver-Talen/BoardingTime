@@ -35,11 +35,11 @@ var Account = mongoose.model('Account_Collection', accountSchema);
 var Message = mongoose.model('Message_Collection', messageSchema);
 
 exports.index = function(req, res){
-    Account.find(function(err, person){
+    Account.find(function(err, account){
         if(err) return console.error(err);
         res.render('index', {
             title: 'Account List',
-            people: person
+            account: account
         });
     });
 }
@@ -52,7 +52,7 @@ exports.create = function(req, res){
 
 exports.createPerson = function(req, res){
     var hash = bcrypt.hashSync(req.body.password);
-    var person = new Account({
+    var account = new Account({
         username: req.body.username,
         age: req.body.age,
         password: hash,
@@ -63,7 +63,7 @@ exports.createPerson = function(req, res){
         avatar_mouth: req.body.avatar.avatar_mouth,
         color: req.body.color
     });
-    person.save(function(err, person){
+    account.save(function(err, account){
         if(err) return console.error(err),
         console.log(person.username + ' added')
     });
@@ -71,11 +71,11 @@ exports.createPerson = function(req, res){
 }
 
 exports.edit = function(req, res){
-    Account.findById(req.params.id, function(err, person){
+    Account.findById(req.params.id, function(err, account){
         if(err) return console.error(err);
         res.render('edit', {
             title: 'Edit',
-            person: person
+            account: account
         });
     });
 }
