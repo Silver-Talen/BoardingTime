@@ -58,9 +58,9 @@ exports.createPerson = function(req, res){
         password: hash,
         userLevel: req.body.userLevel,
         email: req.body.email,
-        avatar_eyes: req.body.avatar.avatar_eyes,
-        avatar_nose: req.body.avatar.avatar_nose,
-        avatar_mouth: req.body.avatar.avatar_mouth,
+        avatar_eyes: req.body.avatar_eyes,
+        avatar_nose: req.body.avatar_nose,
+        avatar_mouth: req.body.avatar_mouth,
         color: req.body.color
     });
     account.save(function(err, account){
