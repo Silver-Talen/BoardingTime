@@ -63,8 +63,8 @@ exports.createPerson = function(req, res){
         avatar_mouth: req.body.avatar_mouth,
         color: req.body.color
     });
-    account.save(function(err, account){
-        if(err) return console.error(err),
+    account.save(function(err, account) {
+        if(err) return console.error(err);
         console.log(account.username + ' added')
     });
     res.redirect('/');
