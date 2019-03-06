@@ -35,11 +35,11 @@ var Account = mongoose.model('Account_Collection', accountSchema);
 var Message = mongoose.model('Message_Collection', messageSchema);
 
 exports.index = function(req, res){
-    Account.find(function(err, account){
+    Message.find(function(err, message){
         if(err) return console.error(err);
         res.render('index', {
-            title: 'Account List',
-            account: account
+            title: 'Message List',
+            message: message
         });
     });
 }
@@ -114,10 +114,10 @@ exports.details = function(req, res){
 }
 
 exports.admin = function(req, res){
-    Person.find(function(err, acount){
+    Account.find(function(err, acount){
         if(err) return console.error(err);
         res.render('admin', {
-            title: 'People List',
+            title: 'Acount List',
             acount: acount
         });
     });
