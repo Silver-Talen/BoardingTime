@@ -65,7 +65,7 @@ exports.createPerson = function(req, res){
     });
     account.save(function(err, account){
         if(err) return console.error(err),
-        console.log(person.username + ' added')
+        console.log(account.username + ' added')
     });
     res.redirect('/');
 }
