@@ -35,11 +35,11 @@ var Account = mongoose.model('Account_Collection', accountSchema);
 var Message = mongoose.model('Message_Collection', messageSchema);
 
 exports.index = function(req, res){
-    Account.find(function(err, account){
+    Message.find(function(err, message){
         if(err) return console.error(err);
         res.render('index', {
-            title: 'Account List',
-            account: account
+            title: 'Message List',
+            message: message
         });
     });
 }
@@ -58,13 +58,13 @@ exports.createPerson = function(req, res){
         password: hash,
         userLevel: req.body.userLevel,
         email: req.body.email,
-        avatar_eyes: req.body.avatar.avatar_eyes,
-        avatar_nose: req.body.avatar.avatar_nose,
-        avatar_mouth: req.body.avatar.avatar_mouth,
+        avatar_eyes: req.body.avatar_eyes,
+        avatar_nose: req.body.avatar_nose,
+        avatar_mouth: req.body.avatar_mouth,
         color: req.body.color
     });
-    account.save(function(err, account){
-        if(err) return console.error(err),
+    account.save(function(err, account) {
+        if(err) return console.error(err);
         console.log(account.username + ' added')
     });
     res.redirect('/');
@@ -89,7 +89,7 @@ exports.editPerson = function(req, res){
         //edit username
         account.save(function(err, account){
             if(err) return console.error(err);
-            console.log(req.body.name + " updated");
+            console.log(req.body.username + " updated");
         });
     });
     res.redirect('/');
@@ -114,11 +114,11 @@ exports.details = function(req, res){
 }
 
 exports.admin = function(req, res){
-    Person.find(function(err, acount){
+    Account.find(function(err, account){
         if(err) return console.error(err);
         res.render('admin', {
-            title: 'People List',
-            acount: acount
+            title: 'Account List',
+            account: account
         });
     });
 }
