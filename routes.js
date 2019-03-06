@@ -114,11 +114,11 @@ exports.details = function(req, res){
 }
 
 exports.admin = function(req, res){
-    Account.find(function(err, acount){
+    Account.find(function(err, account){
         if(err) return console.error(err);
         res.render('admin', {
-            title: 'Acount List',
-            acount: acount
+            title: 'Account List',
+            account: account
         });
     });
 }
