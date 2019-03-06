@@ -20,7 +20,8 @@ var accountSchema = mongoose.Schema({
     password: String,
     userLevel: String,
     email: String,
-    age: String
+    age: String,
+    color: String
 });
 
 var messageSchema = mongoose.Schema({
@@ -61,7 +62,8 @@ exports.createPerson = function(req, res){
         email: req.body.email,
         avatar_eyes: req.body.avatar.avatar_eyes,
         avatar_nose: req.body.avatar.avatar_nose,
-        avatar_mouth: req.body.avatar.avatar_mouth
+        avatar_mouth: req.body.avatar.avatar_mouth,
+        color: req.body.color
     });
     person.save(function(err, person){
         if(err) return console.error(err),
