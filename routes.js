@@ -26,11 +26,9 @@ var accountSchema = mongoose.Schema({
 
 var messageSchema = mongoose.Schema({
     username: String,
-    avatar_eyes: String,
-    avatar_nose: String,
-    avatar_mouth: String,
-    avatar_color: String,
-    date: Date
+    color: String,
+    date: Date,
+    message: String
 });
 
 var Account = mongoose.model('Account_Collection', accountSchema);
@@ -86,6 +84,7 @@ exports.editPerson = function(req, res){
     Account.findById(req.params.id, function(err, account){
         if(err) return console.error(err);
         //edit avatar
+            //color / face parameters
         //edit password
         //edit username
         account.save(function(err, person){
