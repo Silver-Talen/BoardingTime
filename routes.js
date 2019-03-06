@@ -65,7 +65,7 @@ exports.createPerson = function(req, res){
     });
     person.save(function(err, person){
         if(err) return console.error(err),
-        console.log(person.name + ' added')
+        console.log(person.username + ' added')
     });
     res.redirect('/');
 }
@@ -94,8 +94,8 @@ exports.editPerson = function(req, res){
     res.redirect('/');
 }
 
-exports.delete = function(req, res){
-    Account.findByIdAndRemove(req.params.id, function(err, account){
+exports.delete = function(req, res) {
+    Account.findByIdAndRemove(req.params.id, function(err, account) {
         if(err) return console.error(err);
         res.redirect('/');
     });
