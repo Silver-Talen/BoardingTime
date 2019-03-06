@@ -1,0 +1,45 @@
+html{
+    background-color: skyblue;
+}
+
+nav ul{
+    border: solid black 4px;
+    background-color: whitesmoke;
+    display: inline-block;
+    width: 99%;
+    margin: 2px;
+    padding: 0px;    
+    text-align: center;
+    list-style-type: none;
+}
+
+.menuItem{
+    border: solid #222222 2px;
+    background-color: mediumpurple;
+    margin: 5px;
+    padding: 2px 4px;
+    font-size: 24px;
+    text-decoration: none;
+}
+.L{
+    float: left;
+}
+.R{
+    float: right;
+}
+nav a:link {
+    color: #222222;
+    background-color: mediumpurple;
+}
+nav a:visited {
+    color:#222222;
+    background-color: mediumpurple;
+}
+nav a:hover {
+    color: #222222;
+    background-color: rgb(173, 147, 224);
+}
+nav a:active {
+    color: #222222;
+    background-color: rgb(199, 184, 228);    
+}
