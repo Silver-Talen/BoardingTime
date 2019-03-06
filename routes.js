@@ -87,7 +87,7 @@ exports.editPerson = function(req, res){
             //color / face parameters
         //edit password
         //edit username
-        account.save(function(err, person){
+        account.save(function(err, account){
             if(err) return console.error(err);
             console.log(req.body.name + " updated");
         });
