@@ -98,7 +98,7 @@ exports.editPerson = function(req, res){
 exports.delete = function(req, res) {
     Account.findByIdAndRemove(req.params.id, function(err, account) {
         if(err) return console.error(err);
-        res.redirect('/');
+        res.redirect('/admin');
     });
 }
 
