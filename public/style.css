@@ -45,9 +45,10 @@ nav a:active {
 }
 
 .box{
-    margin: 0px 0px 0px 25%;
-    width: 50%;
+    margin: 0px 0px 0px 30%;
+    width: 35%;
     display: inline-block;
+    text-align: center;
     border: solid black 3px;
     background-color: antiquewhite;
 }
@@ -55,9 +56,16 @@ form{
     font-family: Georgia;
     margin: 10px;
 }
+input{
+    margin: 7px 0px;
+}
+select{
+    margin: 7px 0px;
+}
 .signUp{
-    float: right;
     margin: 10px;
+    padding: 5px;
+    width: 50%;
     font-size: 20px;
 }
 
