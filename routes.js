@@ -89,7 +89,7 @@ exports.editPerson = function(req, res){
         //edit username
         account.save(function(err, account){
             if(err) return console.error(err);
-            console.log(req.body.name + " updated");
+            console.log(req.body.username + " updated");
         });
     });
     res.redirect('/');
