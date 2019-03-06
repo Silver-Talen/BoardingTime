@@ -89,7 +89,7 @@ exports.editPerson = function(req, res){
         //edit username
         account.save(function(err, account){
             if(err) return console.error(err);
-            console.log(req.body.name + " updated");
+            console.log(req.body.username + " updated");
         });
     });
     res.redirect('/');
@@ -114,11 +114,11 @@ exports.details = function(req, res){
 }
 
 exports.admin = function(req, res){
-    Account.find(function(err, acount){
+    Account.find(function(err, account){
         if(err) return console.error(err);
         res.render('admin', {
-            title: 'Acount List',
-            acount: acount
+            title: 'Account List',
+            account: account
         });
     });
 }

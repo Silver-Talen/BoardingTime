@@ -44,6 +44,23 @@ nav a:active {
     background-color: rgb(199, 184, 228);    
 }
 
+.box{
+    margin: 0px 0px 0px 25%;
+    width: 50%;
+    display: inline-block;
+    border: solid black 3px;
+    background-color: antiquewhite;
+}
+form{
+    font-family: Georgia;
+    margin: 10px;
+}
+.signUp{
+    float: right;
+    margin: 10px;
+    font-size: 20px;
+}
+
 .image{
     display: block;
     margin-left: auto;
