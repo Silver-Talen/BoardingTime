@@ -43,3 +43,11 @@ nav a:active {
     color: #222222;
     background-color: rgb(199, 184, 228);    
 }
+
+.image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:150px;
+    height:110px;
+}

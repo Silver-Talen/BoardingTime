@@ -112,3 +112,13 @@ exports.details = function(req, res){
         });
     });
 }
+
+exports.admin = function(req, res){
+    Person.find(function(err, acount){
+        if(err) return console.error(err);
+        res.render('admin', {
+            title: 'People List',
+            acount: acount
+        });
+    });
+}

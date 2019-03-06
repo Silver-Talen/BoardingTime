@@ -26,4 +26,6 @@ app.get('/delete/:id', routes.delete);
 
 app.get('/details/:id', routes.details);
 
+app.get('/admin', routes.admin);
+
 app.listen(3000);
