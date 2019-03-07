@@ -14,21 +14,21 @@ var urlencodedParser = bodyParser.urlencoded({
     extended: true
 });
 
-var avatarData;
-var request = new XMLHttpRequest();
- 
-loadData();
- 
-function loadData() {
-  request.open('GET', '');
-  request.onload = loadComplete;
-  request.send();
-}
- 
-function loadComplete(evt) {
-  avatarData = JSON.parse(request.responseText);
-  console.log(avatarData);
-}
+//var avatarData;
+//var request = new XMLHttpRequest();
+// 
+//loadData();
+// 
+//function loadData() {
+//  request.open('GET', 'https://api.adorable.io/avatars/face/:eyes/:nose/:mouth/:color');
+//  request.onload = loadComplete;
+//  request.send();
+//}
+// 
+//function loadComplete(evt) {
+//  avatarData = JSON.parse(request.responseText);
+//  console.log(avatarData);
+//}
 
 app.get('/', routes.index);
 
