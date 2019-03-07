@@ -6,6 +6,14 @@ bodyParser = require('body-parser');
 
 var app = express();
 
+var checkAuth = function(req, res, next) {
+    if(req.session.user && req.session.user.isAuthenticated){
+      next();
+    }else{
+      res.redirect('/');
+    }
+  }
+
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname + '/public')));
@@ -14,34 +22,21 @@ var urlencodedParser = bodyParser.urlencoded({
     extended: true
 });
 
-//var avatarData;
-//var request = new XMLHttpRequest();
-// 
-//loadData();
-// 
-//function loadData() {
-//  request.open('GET', 'https://api.adorable.io/avatars/face/:eyes/:nose/:mouth/:color');
-//  request.onload = loadComplete;
-//  request.send();
-//}
-// 
-//function loadComplete(evt) {
-//  avatarData = JSON.parse(request.responseText);
-//  console.log(avatarData);
-//}
-
 app.get('/', routes.index);
 
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createPerson);
 
 app.get('/edit/:id', routes.edit);
-app.post('/edit/:id', urlencodedParser, routes.editPerson)
+app.post('/edit/:id', urlencodedParser, routes.editPerson);
 
 app.get('/delete/:id', routes.delete);
 
 app.get('/details/:id', routes.details);
 
 app.get('/admin', routes.admin);
+
+app.get('/logout', routes.logout);
+app.post('/login',urlencodedParser, routes.login);
 
 app.listen(3000);

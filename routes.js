@@ -1,5 +1,6 @@
 var mongoose = require('mongoose')
-    bcrypt = require('bcrypt-nodejs');
+    bcrypt = require('bcrypt-nodejs'),
+    expressSession = require('express-session');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
@@ -11,6 +12,11 @@ mdb.on('error', console.error.bind(console, 'connection error'));
 mdb.once('open', function(callback){
 
 });
+//app.use(expressSession({
+//    secret: 'Whatever54321',
+//    saveUninitialized: true,
+//    resave: true
+//  }));
 
 var accountSchema = mongoose.Schema({
     username: String,
@@ -52,6 +58,8 @@ exports.create = function(req, res){
 
 exports.createPerson = function(req, res){
     var hash = bcrypt.hashSync(req.body.password);
+    var regexColor = req.body.color;
+    regexColor = regexColor.replace('', '\[#]\g');
     var account = new Account({
         username: req.body.username,
         age: req.body.age,
@@ -61,13 +69,17 @@ exports.createPerson = function(req, res){
         avatar_eyes: req.body.avatar_eyes,
         avatar_nose: req.body.avatar_nose,
         avatar_mouth: req.body.avatar_mouth,
-        color: req.body.color
+        color: regexColor
     });
     account.save(function(err, account) {
         if(err) return console.error(err);
         console.log(account.username + ' added')
     });
     res.redirect('/');
+}
+
+exports.createMessage = function(req, res) {
+    //take data of whoever is logged in
 }
 
 exports.edit = function(req, res){
@@ -121,4 +133,26 @@ exports.admin = function(req, res){
             account: account
         });
     });
+}
+
+exports.login = function(req, res) {
+    console.log(req.body.username);
+    //check database
+    if(req.body.username=='user' && req.body.pass=='password'){
+      req.session.user={
+        isAuthenticated: true,
+        username: req.body.username
+      };
+      res.redirect('/');
+    }
+}
+
+exports.logout = function (req, res) {
+    req.session.destroy(function(err){
+        if(err){
+          console.log(err);
+        }else{
+          res.redirect('/');
+        }
+      });
 }
