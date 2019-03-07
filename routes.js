@@ -59,7 +59,7 @@ exports.create = function(req, res){
 exports.createPerson = function(req, res){
     var hash = bcrypt.hashSync(req.body.password);
     var regexColor = req.body.color;
-    regexColor = regexColor.replace('', '\[#]\g');
+    regexColor = regexColor.replace(/[#]/g, '');
     var account = new Account({
         username: req.body.username,
         age: req.body.age,
