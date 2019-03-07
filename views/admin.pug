@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    table(class="gridtable")
+    table(class="adminTable")
         tr
             th ID
             th Username
@@ -9,7 +9,7 @@ block content
             th Email
             th User Level
             th
-        each item in acount
+        each item in account
             tr
                 td 
                     a(href="/details/" + item.id) #{item.id}

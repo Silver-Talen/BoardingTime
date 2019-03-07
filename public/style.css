@@ -76,3 +76,25 @@ select{
     width:150px;
     height:110px;
 }
+
+table.adminTable{
+    color: #337;
+    border-width: 1px;
+    border-color: #559;
+}
+
+table.adminTable th{
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #559;
+    background: #ccf;
+}
+
+table.adminTable td{
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #559;
+    background: #fff;
+}
