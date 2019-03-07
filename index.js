@@ -14,6 +14,22 @@ var urlencodedParser = bodyParser.urlencoded({
     extended: true
 });
 
+var avatarData;
+var request = new XMLHttpRequest();
+ 
+loadData();
+ 
+function loadData() {
+  request.open('GET', '');
+  request.onload = loadComplete;
+  request.send();
+}
+ 
+function loadComplete(evt) {
+  avatarData = JSON.parse(request.responseText);
+  console.log(avatarData);
+}
+
 app.get('/', routes.index);
 
 app.get('/create', routes.create);
