@@ -15,6 +15,7 @@ nav ul{
 }
 
 .menuItem{
+    border: solid #E7DfDD 1px;
     border-radius: 5px;
     margin: 5px;
     padding: 2px 6px;
@@ -59,6 +60,7 @@ nav a:active {
     display: block;
     text-align: center;
     background-color: #E7DfDD;
+    border-radius: 10px;
 }
 form{
     font-family: Georgia;
@@ -73,8 +75,8 @@ select{
 .signUp{
     background-color: #4717F6;
     color: #A239CA;
+    border: solid #0e0b16 2px;
     border-radius: 5px;
-    border: none;
     margin: 10px;
     padding: 5px;
     width: 50%;
@@ -98,8 +100,19 @@ select{
 .acountPic{
     float: left;
     display: block;
-    width:150px;
-    height:110px;
+    width: 150px;
+    height: 110px;
+}
+
+.button{
+    background-color: #4717F6;
+    color: #A239CA;
+    border: solid #0e0b16 2px;
+    border-radius: 5px;
+    list-style-type: none;
+    margin: 10px;
+    padding: 5px;
+    font-size: 20px;
 }
 
 table.adminTable{
@@ -142,4 +155,8 @@ div.msgHead{
 div.message{
     padding: 30px;
     text-align: center;
+}
+
+#button:hover{
+    cursor: pointer;
 }

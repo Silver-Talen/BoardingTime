@@ -12,7 +12,6 @@ block content
         //p #{item.username}
         //p #{item.age}
         //p #{item.email}
-        nav
-            ul(class='menu')
-                a(href='/edit' class='menuItem')
-                    li(id='edit') #{'Edit'}
+        a(href='/edit')
+            input(type='submit', value='Edit', class='signUp', id='button')
+            
