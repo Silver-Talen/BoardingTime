@@ -24,7 +24,7 @@ var urlencodedParser = bodyParser.urlencoded({
 });
 
 app.get('/', routes.index);
-
+app.post('/', urlencodedParser, routes.createMessage);
 
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createPerson);

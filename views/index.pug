@@ -4,7 +4,9 @@ block content
         div(class="msgHead")
             p User Name: 
             div(class="message")
-                form()
-                    p what the fuck is goind on here ...i dont even fuckin know..
+                form(id='form', method='post', action='/')
+                    input(type='textarea', name='userPost')
+                    br
+                    input(type='submit', value='Post!', class='post', id='button')
     p 
         a(href="/create") Add new person    
