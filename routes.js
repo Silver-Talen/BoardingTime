@@ -1,4 +1,4 @@
-var mongoose = require('mongoose')
+const mongoose = require('mongoose')
     bcrypt = require('bcrypt-nodejs'),
     expressSession = require('express-session');
 
@@ -7,7 +7,7 @@ mongoose.connect('mongodb://localhost/data', {
     useNewUrlParser: true
 });
 
-var mdb = mongoose.connection;
+const mdb = mongoose.connection;
 mdb.on('error', console.error.bind(console, 'connection error'));
 mdb.once('open', (callback) => {
 
@@ -18,7 +18,7 @@ mdb.once('open', (callback) => {
 //    resave: true
 //  }));
 
-var accountSchema = mongoose.Schema({
+const accountSchema = mongoose.Schema({
     username: String,
     avatar_eyes: String,
     avatar_nose: String,
@@ -30,7 +30,7 @@ var accountSchema = mongoose.Schema({
     color: String
 });
 
-var messageSchema = mongoose.Schema({
+const messageSchema = mongoose.Schema({
     username: String,
     color: String,
     date: Date,

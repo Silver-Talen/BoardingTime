@@ -1,4 +1,4 @@
-var avatarData,
+const avatarData,
 avatar_nose,
 avatar_mouth,
 color,

@@ -1,4 +1,4 @@
-var express = require('express'),
+const express = require('express'),
 pug = require('pug'),
 path = require('path'),
 routes = require('./routes.js'),
