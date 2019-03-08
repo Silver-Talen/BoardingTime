@@ -147,6 +147,12 @@ exports.login = (req, res) => {
     }
 }
 
+exports.acount = (req, res) => {
+    res.render('acount', {
+        title: 'Acount',
+    });
+}
+
 exports.logout = (req, res) => {
     req.session.destroy((err) => {
         if(err){

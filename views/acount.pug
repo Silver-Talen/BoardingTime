@@ -1,2 +1,18 @@
 extends layout
 
+block content
+    div
+        img.image(src="/Omega.png" alt="Omega" class='acountPic')
+        p acount pitcuter
+        //p #{"https://api.adorable.io/avatars/face/" + item.avatar_eyes + "/" + item.avatar_nose + "/" + item.avatar_mouth + "/" + item.color}
+    div(class='box')
+        p username
+        p email
+        p age
+        //p #{item.username}
+        //p #{item.age}
+        //p #{item.email}
+        nav
+            ul(class='menu')
+                a(href='/edit' class='menuItem')
+                    li(id='edit') #{'Edit'}
