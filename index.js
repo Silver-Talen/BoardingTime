@@ -4,25 +4,26 @@ path = require('path'),
 routes = require('./routes.js'),
 bodyParser = require('body-parser');
 
-var app = express();
+var expressSession = require("express-session");
 
-const checkAuth = (req, res, next) => {
-    if(req.session.user && req.session.user.isAuthenticated){
-      next();
-    }else{
-      res.redirect('/');
-    }
-  }
+var app = express();
 
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
+
 app.use(express.static(path.join(__dirname + '/public')));
+app.use(expressSession({
+  secret: 'Whatever54321',
+  saveUninitialized: true,
+  resave: true
+}));
 
 var urlencodedParser = bodyParser.urlencoded({
     extended: true
 });
 
 app.get('/', routes.index);
+
 
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createPerson);
@@ -39,6 +40,7 @@ app.get('/admin', routes.admin);
 app.get('/acount', routes.acount);
 
 app.get('/logout', routes.logout);
-app.post('/login',urlencodedParser, routes.login);
+app.get('/login', routes.login);
+app.post('/login', urlencodedParser, routes.authenticateUser);
 
 app.listen(3000);

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
-    bcrypt = require('bcrypt-nodejs'),
-    expressSession = require('express-session');
+    bcrypt = require('bcrypt-nodejs');
+var expressSession = require("express-session");
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
@@ -12,11 +12,6 @@ mdb.on('error', console.error.bind(console, 'connection error'));
 mdb.once('open', (callback) => {
 
 });
-//app.use(expressSession({
-//    secret: 'Whatever54321',
-//    saveUninitialized: true,
-//    resave: true
-//  }));
 
 const accountSchema = mongoose.Schema({
     username: String,
@@ -39,6 +34,12 @@ const messageSchema = mongoose.Schema({
 
 var Account = mongoose.model('Account_Collection', accountSchema);
 var Message = mongoose.model('Message_Collection', messageSchema);
+
+exports.expressSession = () => ({
+    secret: 'Whatever54321',
+    saveUninitialized: true,
+    resave: true
+  });
 
 exports.index = (req, res) => {
     Message.find((err, message) => {
@@ -136,15 +137,22 @@ exports.admin = (req, res) => {
 }
 
 exports.login = (req, res) => {
+    res.render('login', {
+        title: 'Login'
+    });
+}
+
+exports.authenticateUser = (req, res) => {
     console.log(req.body.username);
-    //check database
-    if(req.body.username=='user' && req.body.pass=='password'){
-      req.session.user={
-        isAuthenticated: true,
-        username: req.body.username
-      };
+    Account.find((err, account) => {
+        if(req.body.username==account.username && req.body.pass==account.password){
+            req.session.user={
+              isAuthenticated: true,
+              username: req.body.username
+            };
+        }
+    })
       res.redirect('/');
-    }
 }
 
 exports.acount = (req, res) => {
@@ -162,3 +170,11 @@ exports.logout = (req, res) => {
         }
       });
 }
+
+exports.checkAuth = function(req, res, next) {
+    if(req.session.user && req.session.user.isAuthenticated){
+      next();
+    }else{
+      res.redirect('/');
+    }
+  }
