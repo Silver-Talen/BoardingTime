@@ -13,10 +13,11 @@ app.set('views', __dirname + '/views');
 
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(expressSession({
-  secret: 'Whatever54321',
-  saveUninitialized: true,
-  resave: true
+    secret: 'Whatever54321',
+    saveUninitialized: true,
+    resave: true
 }));
+
 
 var urlencodedParser = bodyParser.urlencoded({
     extended: true
@@ -37,7 +38,7 @@ app.get('/details/:id', routes.details);
 
 app.get('/admin', routes.admin);
 
-app.get('/acount', routes.acount);
+app.get('/account', routes.account);
 
 app.get('/login', routes.login);
 app.post('/login', urlencodedParser, routes.authenticateUser);

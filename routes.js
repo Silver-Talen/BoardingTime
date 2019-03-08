@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
     bcrypt = require('bcrypt-nodejs');
-var expressSession = require("express-session");
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
@@ -34,12 +33,6 @@ const messageSchema = mongoose.Schema({
 
 var Account = mongoose.model('Account_Collection', accountSchema);
 var Message = mongoose.model('Message_Collection', messageSchema);
-
-exports.expressSession = () => ({
-    secret: 'Whatever54321',
-    saveUninitialized: true,
-    resave: true
-  });
 
 exports.index = (req, res) => {
     Message.find((err, message) => {
@@ -150,6 +143,7 @@ exports.authenticateUser = (req, res) => {
               isAuthenticated: true,
               username: req.body.username
             };
+            console.log(req.session);
         }
         else{
             console.log("Not authenticated");
@@ -158,18 +152,20 @@ exports.authenticateUser = (req, res) => {
     res.redirect('/');
 }
 
-exports.acount = (req, res) => {
-    res.render('acount', {
-        title: 'Acount',
+exports.account = (req, res) => {
+    res.render('account', {
+        title: 'Account',
     });
 }
 
 exports.logout = (req, res) => {
+    console.log(req.session);
     req.session.destroy((err) => {
         if(err){
           console.log(err);
         }else{
-          res.redirect('/');
+            console.log("Session destroyed");
+            res.redirect('/');
         }
       });
 }
