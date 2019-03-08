@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
-    bcrypt = require('bcrypt-nodejs'),
-    expressSession = require('express-session');
+    bcrypt = require('bcrypt-nodejs');
+
+var expressSession = require('express-session');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
