@@ -143,16 +143,19 @@ exports.login = (req, res) => {
 }
 
 exports.authenticateUser = (req, res) => {
-    console.log(req.body.username);
-    Account.find((err, account) => {
-        if(req.body.username==account.username && req.body.pass==account.password){
+    Account.find({username: req.body.username}, (err, account) => {
+        if(err) console.error(err);
+        if(req.body.username==account[0].username && bcrypt.compareSync(req.body.password, account[0].password)){
             req.session.user={
               isAuthenticated: true,
               username: req.body.username
             };
         }
+        else{
+            console.log("Not authenticated");
+        }
     })
-      res.redirect('/');
+    res.redirect('/');
 }
 
 exports.acount = (req, res) => {
