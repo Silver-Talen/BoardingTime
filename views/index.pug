@@ -1,19 +1,9 @@
 extends layout
 block content
     img.image(src="/Omega.png" alt="Omega")
-
-    table(class="adminTable")
-        tr
-        each item in message
-            tr
-                td 
-                td #{item.username}
-                td #{item.age}
-                td #{item.email}
-                td #{item.userLevel}
-                td 
-                    a(href="/edit/" + item.id) Edit
-                td 
-                    a(href="/delete/" + item.id) Delete
+    div(class="messageBoard")
+        div(class="msgHead")
+            div(class="message")
+                p what the fuck is goind on here ...i dont even fuckin know..
     p 
         a(href="/create") Add new person    

@@ -7,8 +7,8 @@ block content
             th Username
             th Age
             th Email
-            th User Level
             th Avatar
+            th User Level
             th
         each item in account
             tr
@@ -16,7 +16,7 @@ block content
                 td #{item.username}
                 td #{item.age}
                 td #{item.email}
-                td #{item.userLevel}
                 td #{"https://api.adorable.io/avatars/face/" + item.avatar_eyes + "/" + item.avatar_nose + "/" + item.avatar_mouth + "/" + item.color}
+                td #{item.userLevel}
                 td 
                     a(href="/delete/" + item.id) Delete

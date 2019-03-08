@@ -1,10 +1,9 @@
 html{
-    background-color: skyblue;
+    background-color: #0e0b16;
 }
 
 nav ul{
-    border: solid black 4px;
-    background-color: whitesmoke;
+    border-bottom: solid #E7DfDD 1px;
     display: inline-block;
     width: 99%;
     margin: 2px;
@@ -14,43 +13,52 @@ nav ul{
 }
 
 .menuItem{
-    border: solid #222222 2px;
-    background-color: mediumpurple;
+    border-radius: 5px;
     margin: 5px;
     padding: 2px 4px;
     font-size: 24px;
     text-decoration: none;
 }
+
 .L{
     float: left;
 }
+
 .R{
     float: right;
 }
+
 nav a:link {
-    color: #222222;
-    background-color: mediumpurple;
+    color: #A239CA;
+    background-color: #4717F6;
 }
+
 nav a:visited {
-    color:#222222;
-    background-color: mediumpurple;
+    color:#A239CA;
+    font-size: 1em;
+    background-color: #4717F6;
 }
+
 nav a:hover {
-    color: #222222;
-    background-color: rgb(173, 147, 224);
+    color: #A239CA;
+    background-color: rgb(57, 19, 194);
 }
+
 nav a:active {
-    color: #222222;
-    background-color: rgb(199, 184, 228);    
+    color: #A239CA;
+    background-color: rgb(57, 19, 194);    
 }
 
 .box{
-    margin: 0px 0px 0px 30%;
-    width: 35%;
-    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    padding: 5px;
+    max-width: 500px;
+    display: block;
     text-align: center;
-    border: solid black 3px;
-    background-color: antiquewhite;
+    align-content: center;
+    background-color: #E7DfDD;
 }
 form{
     font-family: Georgia;
@@ -63,10 +71,19 @@ select{
     margin: 7px 0px;
 }
 .signUp{
+    background-color: #4717F6;
+    color: #A239CA;
+    border-radius: 5px;
+    border: none;
     margin: 10px;
     padding: 5px;
     width: 50%;
     font-size: 20px;
+}
+
+.signUp:hover{
+    color: #A239CA;
+    background-color: rgb(57, 19, 194)
 }
 
 .image{
@@ -78,23 +95,33 @@ select{
 }
 
 table.adminTable{
-    color: #337;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     border-width: 1px;
-    border-color: #559;
 }
 
 table.adminTable th{
-    border-width: 1px;
+    border-width: 3px;
     padding: 8px;
-    border-style: solid;
-    border-color: #559;
-    background: #ccf;
+    color: #A239CA;
+    background: #4717F6;
 }
 
 table.adminTable td{
-    border-width: 1px;
+    border-width: 3px;
     padding: 8px;
-    border-style: solid;
+    background: #E7DfDD;
+}
+
+div.messageBoard{
+    min-width: 300px;
+    min-height: 200px;
+    padding: 30px;
+    margin: 10px;
+    text-align: center;
+    background-color: #E7DfDD;
+    border-width: 1px;
     border-color: #559;
-    background: #fff;
+    border-radius: 5px;
 }

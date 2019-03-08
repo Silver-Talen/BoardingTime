@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/data', {
 
 var mdb = mongoose.connection;
 mdb.on('error', console.error.bind(console, 'connection error'));
-mdb.once('open', function(callback){
+mdb.once('open', (callback) => {
 
 });
 //app.use(expressSession({
@@ -40,8 +40,8 @@ var messageSchema = mongoose.Schema({
 var Account = mongoose.model('Account_Collection', accountSchema);
 var Message = mongoose.model('Message_Collection', messageSchema);
 
-exports.index = function(req, res){
-    Message.find(function(err, message){
+exports.index = (req, res) => {
+    Message.find((err, message) => {
         if(err) return console.error(err);
         res.render('index', {
             title: 'Message List',
@@ -50,13 +50,13 @@ exports.index = function(req, res){
     });
 }
 
-exports.create = function(req, res){
+exports.create = (req, res) => {
     res.render('create', {
         title: 'Add Person'
     });
 }
 
-exports.createPerson = function(req, res){
+exports.createPerson = (req, res) => {
     var hash = bcrypt.hashSync(req.body.password);
     var regexColor = req.body.color;
     regexColor = regexColor.replace(/[#]/g, '');
@@ -71,19 +71,19 @@ exports.createPerson = function(req, res){
         avatar_mouth: req.body.avatar_mouth,
         color: regexColor
     });
-    account.save(function(err, account) {
+    account.save((err, account) => {
         if(err) return console.error(err);
         console.log(account.username + ' added')
     });
     res.redirect('/');
 }
 
-exports.createMessage = function(req, res) {
+exports.createMessage = (req, res) => {
     //take data of whoever is logged in
 }
 
-exports.edit = function(req, res){
-    Account.findById(req.params.id, function(err, account){
+exports.edit = (req, res) => {
+    Account.findById(req.params.id, (err, account) => {
         if(err) return console.error(err);
         res.render('edit', {
             title: 'Edit',
@@ -92,14 +92,14 @@ exports.edit = function(req, res){
     });
 }
 
-exports.editPerson = function(req, res){
-    Account.findById(req.params.id, function(err, account){
+exports.editPerson = (req, res) => {
+    Account.findById(req.params.id, (err, account) => {
         if(err) return console.error(err);
         //edit avatar
             //color / face parameters
         //edit password
         //edit username
-        account.save(function(err, account){
+        account.save((err, account) => {
             if(err) return console.error(err);
             console.log(req.body.username + " updated");
         });
@@ -107,15 +107,15 @@ exports.editPerson = function(req, res){
     res.redirect('/');
 }
 
-exports.delete = function(req, res) {
-    Account.findByIdAndRemove(req.params.id, function(err, account) {
+exports.delete = (req, res) => {
+    Account.findByIdAndRemove(req.params.id, (err, account) => {
         if(err) return console.error(err);
         res.redirect('/admin');
     });
 }
 
-exports.details = function(req, res){
-    Account.findById(req.params.id, function(err, account){
+exports.details = (req, res) => {
+    Account.findById(req.params.id, (err, account) => {
         if(err) return console.error(err);
         res.render('details', {
             title: 'Details',
@@ -125,8 +125,8 @@ exports.details = function(req, res){
     });
 }
 
-exports.admin = function(req, res){
-    Account.find(function(err, account){
+exports.admin = (req, res) => {
+    Account.find((err, account) => {
         if(err) return console.error(err);
         res.render('admin', {
             title: 'Account List',
@@ -135,7 +135,7 @@ exports.admin = function(req, res){
     });
 }
 
-exports.login = function(req, res) {
+exports.login = (req, res) => {
     console.log(req.body.username);
     //check database
     if(req.body.username=='user' && req.body.pass=='password'){
@@ -147,8 +147,8 @@ exports.login = function(req, res) {
     }
 }
 
-exports.logout = function (req, res) {
-    req.session.destroy(function(err){
+exports.logout = (req, res) => {
+    req.session.destroy((err) => {
         if(err){
           console.log(err);
         }else{

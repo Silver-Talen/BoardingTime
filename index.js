@@ -6,7 +6,7 @@ bodyParser = require('body-parser');
 
 var app = express();
 
-var checkAuth = function(req, res, next) {
+const checkAuth = (req, res, next) => {
     if(req.session.user && req.session.user.isAuthenticated){
       next();
     }else{
