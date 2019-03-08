@@ -4,6 +4,8 @@ path = require('path'),
 routes = require('./routes.js'),
 bodyParser = require('body-parser');
 
+var expressSession = require("express-session");
+
 var app = express();
 
 app.set('view engine', 'pug');
@@ -22,7 +24,6 @@ var urlencodedParser = bodyParser.urlencoded({
 
 app.get('/', routes.index);
 
-//app.get('/login', routes.login);
 
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createPerson);
@@ -37,6 +38,7 @@ app.get('/details/:id', routes.details);
 app.get('/admin', routes.admin);
 
 app.get('/logout', routes.logout);
-app.post('/login', urlencodedParser, routes.login);
+app.get('/login', routes.login);
+app.post('/login', urlencodedParser, routes.authenticateUser);
 
 app.listen(3000);

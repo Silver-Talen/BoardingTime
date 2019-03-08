@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
     bcrypt = require('bcrypt-nodejs');
-
-var expressSession = require('express-session');
+var expressSession = require("express-session");
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
@@ -35,6 +34,12 @@ const messageSchema = mongoose.Schema({
 
 var Account = mongoose.model('Account_Collection', accountSchema);
 var Message = mongoose.model('Message_Collection', messageSchema);
+
+exports.expressSession = () => ({
+    secret: 'Whatever54321',
+    saveUninitialized: true,
+    resave: true
+  });
 
 exports.index = (req, res) => {
     Message.find((err, message) => {
@@ -132,6 +137,12 @@ exports.admin = (req, res) => {
 }
 
 exports.login = (req, res) => {
+    res.render('login', {
+        title: 'Login'
+    });
+}
+
+exports.authenticateUser = (req, res) => {
     console.log(req.body.username);
     Account.find((err, account) => {
         if(req.body.username==account.username && req.body.pass==account.password){
