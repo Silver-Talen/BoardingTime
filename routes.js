@@ -136,6 +136,10 @@ exports.admin = (req, res) => {
 }
 
 exports.login = (req, res) => {
+    
+}
+
+exports.authenticateUser = (req, res) =>{
     console.log(req.body.username);
     //check database
     if(req.body.username=='user' && req.body.pass=='password'){
