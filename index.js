@@ -37,6 +37,8 @@ app.get('/details/:id', routes.details);
 
 app.get('/admin', routes.admin);
 
+app.get('/acount', routes.acount);
+
 app.get('/logout', routes.logout);
 app.get('/login', routes.login);
 app.post('/login', urlencodedParser, routes.authenticateUser);

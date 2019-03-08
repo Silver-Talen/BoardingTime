@@ -155,6 +155,12 @@ exports.authenticateUser = (req, res) => {
       res.redirect('/');
 }
 
+exports.acount = (req, res) => {
+    res.render('acount', {
+        title: 'Acount',
+    });
+}
+
 exports.logout = (req, res) => {
     req.session.destroy((err) => {
         if(err){
