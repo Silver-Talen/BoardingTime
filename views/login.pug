@@ -3,14 +3,14 @@ block content
   head
     title Authentication
   body
-    h3 Name Entry
-    form(id='form', method='post', action='/login')
-      label Username:
-      br
-      input(type='text', name='username')
-      br
-      label Password:
-      br
-      input(type='password', name='password')
-      br
-      input(type='submit', value='submit')
+    div(class="box" id="loginBox")
+      form(id='form', method='post', action='/login')
+        label Username:
+        br
+        input(type='text', name='username')
+        br
+        label Password: 
+        br
+        input(type='password', name='password')
+        br
+        input(type='submit', value='Login')
