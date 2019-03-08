@@ -36,12 +36,6 @@ const messageSchema = mongoose.Schema({
 var Account = mongoose.model('Account_Collection', accountSchema);
 var Message = mongoose.model('Message_Collection', messageSchema);
 
-exports.expressSession = () => ({
-    secret: 'Whatever54321',
-    saveUninitialized: true,
-    resave: true
-  });
-
 exports.index = (req, res) => {
     Message.find((err, message) => {
         if(err) return console.error(err);
