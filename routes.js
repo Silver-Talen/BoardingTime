@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
     bcrypt = require('bcrypt-nodejs');
 
+var activeSession = false;
+
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
     useNewUrlParser: true
@@ -39,14 +41,16 @@ exports.index = (req, res) => {
         if(err) return console.error(err);
         res.render('index', {
             title: 'Message List',
-            message: message
+            message: message,
+            session: activeSession
         });
     });
 }
 
 exports.create = (req, res) => {
     res.render('create', {
-        title: 'Add Person'
+        title: 'Add Person',
+        session: activeSession
     });
 }
 
@@ -139,9 +143,10 @@ exports.authenticateUser = (req, res) => {
     Account.find({username: req.body.username}, (err, account) => {
         if(err) console.error(err);
         if(req.body.username==account[0].username && bcrypt.compareSync(req.body.password, account[0].password)){
+            activeSession = true;
             req.session.user={
               isAuthenticated: true,
-              username: req.body.username
+              username: req.body.username,
             };
             console.log(req.session);
         }
@@ -161,6 +166,7 @@ exports.account = (req, res) => {
 exports.logout = (req, res) => {
     console.log(req.session);
     req.session.destroy((err) => {
+        activeSession = false;
         if(err){
           console.log(err);
         }else{
