@@ -18,7 +18,6 @@ app.use(expressSession({
     resave: true
 }));
 
-
 var urlencodedParser = bodyParser.urlencoded({
     extended: true
 });

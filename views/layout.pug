@@ -7,15 +7,16 @@ html
             ul(class='menu')
                 a(href='/' class='menuItem L')
                     li(id='Home') #{'Home'}
+                    
+                a(id='sign_up' href='/create' class='menuItem R')
+                    li #{'Sign Up'}
+                a(id='login' href='/login' class='menuItem R')
+                    li #{'Login'}
 
-                a(href='/create' class='menuItem R')
-                    li(id='sign_up') #{'Sign Up'}
-                a(href='/login' class='menuItem R')
-                    li(id='login') #{'Login'}
-
-                a(href='/logout' class='menuItem R')
-                    li(id='logout') #{'Logout'}
-                a(href='/account' class='menuItem R')
-                    li(id='account') #{'Account'}                
-    img.image(src="/Omega.png" alt="Omega" class='logo')           
+                a(id="logout" href='/logout' class='menuItem R')
+                    li #{'Logout'}
+                a(id="account" href='/account' class='menuItem R')
+                    li #{'Account'}              
+    img.image(src="/Omega.png" alt="Omega" class='logo')
     block content
+    script(src='frontend.js')
