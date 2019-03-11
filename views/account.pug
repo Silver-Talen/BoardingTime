@@ -1,6 +1,8 @@
 extends layout
 
 block content
+    head
+        title Account
     script().
         var userLevel = '#{account.userLevel}';
         var active = '#{session}';
