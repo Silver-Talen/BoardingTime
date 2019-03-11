@@ -1,10 +1,10 @@
 html{
-    background-color: #0e0b16;
-    font-family: 'Source Serif Pro', serif;
+    background-color: #0e0b16;    
 }
 
 nav ul{
     border-bottom: solid #E7DfDD 1px;
+    font-family: AntiqueQuest;
     font-size: 2em;
     display: inline-block;
     width: 99%;
@@ -161,4 +161,19 @@ div.message{
 
 #button:hover{
     cursor: pointer;
+}
+
+@font-face {
+    font-family: Alice;
+    src: url(alice-regular.ttf);
+}
+
+@font-face {
+    font-family: AtelierOmega;
+    src: url(atelier-omega.ttf);
+}
+
+@font-face {
+    font-family: AntiqueQuest;
+    src: url(antique-quest-st.ttf);
 }

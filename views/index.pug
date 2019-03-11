@@ -1,5 +1,13 @@
 extends layout
 block content   
+    each item in message
+        div(class="messageBoard")
+            div(class="msgHead")
+                p #{item.username}:
+                div(class="message")
+                    p #{item.message}
+                        div(class="date")
+                            p #{item.date}
     div(class="messageBoard")
         div(class="msgHead")
             p #{username}:
