@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 var activeSession = false;
 var username = "";
+var userLevel = "";
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
@@ -67,7 +68,9 @@ exports.createPerson = (req, res) => {
         avatar_eyes: req.body.avatar_eyes,
         avatar_nose: req.body.avatar_nose,
         avatar_mouth: req.body.avatar_mouth,
-        color: regexColor
+        color: regexColor,
+        //userLevel: "admin"
+        userLevel: "default"
     });
     account.save((err, account) => {
         if(err) return console.error(err);
@@ -128,7 +131,8 @@ exports.admin = (req, res) => {
         if(err) return console.error(err);
         res.render('admin', {
             title: 'Account List',
-            account: account
+            account: account,
+            "userLevel": userLevel
         });
     });
 }
@@ -150,6 +154,7 @@ exports.authenticateUser = (req, res) => {
               username: req.body.username,
             };
             username = req.session.user.username;
+            userLevel = account[0].userLevel;
         }
         else{
             console.log("Not authenticated");
