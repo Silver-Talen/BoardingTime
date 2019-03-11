@@ -50,8 +50,7 @@ exports.index = (req, res) => {
 
 exports.create = (req, res) => {
     res.render('create', {
-        "title": 'Add Person',
-        "session": activeSession
+        "title": 'Add Person'
     });
 }
 
@@ -136,7 +135,8 @@ exports.admin = (req, res) => {
 
 exports.login = (req, res) => {
     res.render('login', {
-        title: 'Login'
+        title: 'Login',
+        "session": activeSession
     });
 }
 
@@ -149,8 +149,6 @@ exports.authenticateUser = (req, res) => {
               isAuthenticated: true,
               username: req.body.username,
             };
-            console.log(req.session);
-            console.log(req.session.user.username);
             username = req.session.user.username;
         }
         else{
