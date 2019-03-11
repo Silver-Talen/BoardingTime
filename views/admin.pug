@@ -4,7 +4,7 @@ block content
     head
         title Administration
     script().
-        var userLevel = '#{account[0].userLevel}';
+        var userLevel = '#{userLevel}';
         var active = '#{session}';
     script(src='frontend-admin.js')
     table(class="adminTable")
