@@ -18,7 +18,7 @@ block content
                 form(id='form', method='post', action='/')
                     textarea(name="userPosts", cols="60", rows="10")
                     br
-                    input(type='submit', value='Post!', class='signUp', id='button')
+                    input(type='submit', value='Post!', class='signUp button', id='post')
     script().
         var active = '#{session}';
         var userLevel = '#{userLevel}';

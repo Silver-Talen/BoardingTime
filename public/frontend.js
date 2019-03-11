@@ -12,6 +12,8 @@ if(active == "true" && userLevel == "admin"){
     document.getElementById("logout").style.display = "block";
 
     document.getElementById("delete").style.display = "block";
+
+    document.getElementById("post").style.display = "block";
 }
 else if (active == "true"){
     //hide
@@ -25,6 +27,8 @@ else if (active == "true"){
     document.getElementById("account").style.display = "block";
     
     document.getElementById("logout").style.display = "block";
+
+    document.getElementById("post").style.display = "block";
 }
 else{
     //hide
@@ -37,6 +41,8 @@ else{
     document.getElementById("delete").style.display = "none";
 
     document.getElementById("edit").style.display = "none";
+
+    document.getElementById("post").style.display = "none";
 
     //display
     document.getElementById("login").style.display = "block";
