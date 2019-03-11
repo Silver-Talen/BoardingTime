@@ -3,6 +3,10 @@ extends layout
 block content
     head
         title Account
+    script().
+        var userLevel = '#{account.userLevel}';
+        var active = '#{session}';
+    script(src='frontend-account.js')
     div(class='box')
         img.image(src="https://api.adorable.io/avatars/face/"+avatar_eyes+"/"+avatar_nose+"/"+avatar_mouth+"/"+avatar_color alt="Omega" class='accountPic')
         p Username: #{username}
@@ -10,6 +14,5 @@ block content
         p Age: #{age}
         a(href='/edit')
             input(type='submit', value='Edit', class='signUp', id='button')
-    script().
-        var active = '#{session}';
+    
             
