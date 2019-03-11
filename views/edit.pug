@@ -45,3 +45,6 @@ block content
             input(type="color", name="color", value="#"+avatar_color)
             br
             input(type='submit', value='Save', class='signUp', id='button')
+    script().
+        var active = '#{session}';
+        var userLevel = '#{userLevel}';

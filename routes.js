@@ -126,7 +126,7 @@ exports.edit = (req, res) => {
 }
 
 exports.editPerson = (req, res) => {
-    var query = Account.findOne({username: username}, (err, user) => {
+    Account.findById(req.params.id, (err, user) => {
         if (err) return handleError(err);
         var hash = bcrypt.hashSync(req.body.password);
         var regexColor = req.body.color;
@@ -140,8 +140,12 @@ exports.editPerson = (req, res) => {
         user.avatar_nose = req.body.avatar_nose;
         user.avatar_mouth = req.body.avatar_mouth;
         user.color = regexColor;
-        res.redirect('/account');
+        user.save((err, user) => {
+            if(err) return console.error(err);
+            console.log(user.username + ' added')
+        });
     });
+    res.redirect('/account');
 }
 
 exports.delete = (req, res) => {
@@ -199,7 +203,7 @@ exports.account = (req, res) => {
     Account.findOne({username: username}, (err, user) => {
         if (err) return handleError(err);
         res.render('account', {
-            title: 'Account',        
+            title: 'Account',
             avatar_eyes: user.avatar_eyes,
             avatar_mouth: user.avatar_mouth,
             avatar_nose: user.avatar_nose,
