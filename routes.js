@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 var activeSession = false;
 var username = "";
 var userLevel = "";
+var currentdate = new Date();
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
@@ -51,7 +52,28 @@ exports.index = (req, res) => {
 }
 
 exports.createMessage = (req, res) => {
-    
+    var message = new Message({
+        username: username,
+        date: currentdate.getDate() + "/"
+        + (currentdate.getMonth()+1)  + "/" 
+        + currentdate.getFullYear() + " @ "  
+        + currentdate.getHours() + ":"  
+        + currentdate.getMinutes() + ":" 
+        + currentdate.getSeconds(),
+        message: req.body.userPosts
+    });
+    message.save((err, message) => {
+        if(err) return handleError(err);
+        console.log("Message Saved")
+    });
+    res.redirect('/');
+}
+
+exports.deleteMessage = (req, res) => {
+    Message.findByIdAndRemove(req.params.id, (err, account) => {
+        if(err) return console.error(err);
+        res.redirect('/');
+    });
 }
 
 exports.create = (req, res) => {

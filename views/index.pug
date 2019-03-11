@@ -9,6 +9,7 @@ block content
                 p Date: #{item.date}
                 div(class="message")
                     p #{item.message}
+                a(href="/deleteMessage/" + item.id) Delete
     div(class="messageBoard")
         div(class="msgHead")
             p User Name: #{username}
