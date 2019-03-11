@@ -9,8 +9,8 @@ block content
                 p Date: #{item.date}
                 div(class="message")
                     p #{item.message}
-                a(href="/editMessage/" + item.id) Edit
-                a(href="/deleteMessage/" + item.id) Delete
+                a(id="edit" href="/editMessage/" + item.id) Edit
+                a(id="delete" href="/deleteMessage/" + item.id) Delete
     div(class="messageBoard")
         div(class="msgHead")
             p User Name: #{username}

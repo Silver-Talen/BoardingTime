@@ -24,6 +24,8 @@ var urlencodedParser = bodyParser.urlencoded({
 
 app.get('/', routes.index);
 app.post('/', urlencodedParser, routes.createMessage);
+app.get('/editMessage', routes.editMsg)
+app.post('/editMessage/:id', urlencodedParser, routes.editMessage);
 app.get('/deleteMessage/:id', routes.deleteMessage);
 
 app.get('/create', routes.create);

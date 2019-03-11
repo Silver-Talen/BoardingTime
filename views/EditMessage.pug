@@ -1,0 +1,13 @@
+extends layout
+block content
+    head
+        title Message-Edit
+    form(id='form', method='post', action='/editMessage/' + message_id)
+        div(class="messageBoard")
+            div(class="msgHead")
+                p User Name: #{username}
+                div(class="message")
+                    form(id='form', method='post', action='/')
+                        textarea(name="userPosts", cols="60", rows="10")
+                        br
+                        input(type='submit', value='Post!', class='signUp', id='button')
