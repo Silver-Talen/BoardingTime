@@ -254,7 +254,7 @@ exports.logout = (req, res) => {
       });
 }
 
-exports.checkAuth = function(req, res, next) {
+exports.checkAuth = (req, res, next) => {
     if(req.session.user && req.session.user.isAuthenticated){
       next();
     }else{
