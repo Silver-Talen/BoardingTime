@@ -70,18 +70,25 @@ exports.createMessage = (req, res) => {
 }
 
 exports.editMsg = (req, res) => {
-    var query = Message.findOne({username: username}, (err, message) => {
-        if (err) return handleError(err);
+    Message.findOne({username: username}, (err, message) =>{
+        if(err) return console.error(err);
         res.render('editMsg', {
             title: 'Edit Message',
-            "session": activeSession,
-            message_id: message._id
+            message: message
         });
     });
 }
 
 exports.editMessage = (req, res) => {
-
+    Message.findOne({username: username}, (err, message) => {
+        if(err) return console.error(err);       
+        message.message = req.body.userPosts;
+        message.save((err, message) => {
+            if(err) return console.error(err);
+            console.log("Message updated");
+        });
+    });
+    res.redirect('/');
 }
 
 exports.deleteMessage = (req, res) => {

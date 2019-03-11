@@ -150,17 +150,14 @@ div.messageBoard{
     border-radius: 5px;
 }
 
-.message{
-    word-wrap: break-word;
-  }
-
 div.msgHead{
     margin: 5px;
 }
 
 div.message{
-    padding: 30px;
+    padding: 10px;
     text-align: center;
+    word-wrap: break-word;
 }
 
 #button:hover{
