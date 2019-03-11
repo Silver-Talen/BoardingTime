@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 var activeSession = false;
 var username = "";
 var userLevel = "";
+var currentdate = new Date();
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
@@ -41,17 +42,43 @@ exports.index = (req, res) => {
     Message.find((err, message) => {
         if(err) return console.error(err);
         res.render('index', {
-            "title": 'Message List',
+            "title": 'Home',
             "message": message,
             "session": activeSession,
-            "username": username
+            "username": username,
+            "userLevel": userLevel
         });
+    });
+}
+
+exports.createMessage = (req, res) => {
+    var message = new Message({
+        username: username,
+        date: currentdate.getDate() + "/"
+        + (currentdate.getMonth()+1)  + "/" 
+        + currentdate.getFullYear() + " @ "  
+        + currentdate.getHours() + ":"  
+        + currentdate.getMinutes() + ":" 
+        + currentdate.getSeconds(),
+        message: req.body.userPosts
+    });
+    message.save((err, message) => {
+        if(err) return handleError(err);
+        console.log("Message Saved")
+    });
+    res.redirect('/');
+}
+
+exports.deleteMessage = (req, res) => {
+    Message.findByIdAndRemove(req.params.id, (err, account) => {
+        if(err) return console.error(err);
+        res.redirect('/');
     });
 }
 
 exports.create = (req, res) => {
     res.render('create', {
-        "title": 'Add Person'
+        "title": 'Sign Up'
     });
 }
 
@@ -79,16 +106,12 @@ exports.createPerson = (req, res) => {
     res.redirect('/');
 }
 
-exports.createMessage = (req, res) => {
-    //take data of whoever is logged in
-}
-
 exports.edit = (req, res) => {
     var query = Account.findOne({username: username}, (err, user) => {
         if (err) return handleError(err);
         console.log(user.avatar_eyes);
         res.render('edit', {
-            title: 'Edit',
+            title: 'Account',
             "session": activeSession,
             user_id: user._id,
             avatar_eyes: user.avatar_eyes,
@@ -130,12 +153,13 @@ exports.delete = (req, res) => {
 
 exports.admin = (req, res) => {
     Account.find((err, account) => {
+        console.log(userLevel);
         if(err) return console.error(err);
         res.render('admin', {
-            title: 'Account List',
+            title: 'Administration',
             account: account,
             "session": activeSession,
-            "userLevel": userLevel
+            userLevel: userLevel
         });
     });
 }
@@ -172,11 +196,8 @@ exports.authenticateUser = (req, res) => {
 }
 
 exports.account = (req, res) => {
-    var query = Account.findOne({username: username}, (err, user) => {
+    Account.findOne({username: username}, (err, user) => {
         if (err) return handleError(err);
-        console.log("Acount-------------");
-        console.log(user);
-        console.log("-------------------");
         res.render('account', {
             title: 'Account',        
             avatar_eyes: user.avatar_eyes,
@@ -185,7 +206,9 @@ exports.account = (req, res) => {
             avatar_color: user.color,
             username: user.username,
             age: user.age,
-            email: user.email
+            email: user.email,
+            "session": activeSession,
+            account: user
         });
     });
 }
@@ -195,6 +218,7 @@ exports.logout = (req, res) => {
     req.session.destroy((err) => {
         username = "";
         activeSession = false;
+        userLevel = "";
         if(err){
           console.log(err);
         }else{

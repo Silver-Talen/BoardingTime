@@ -1,6 +1,8 @@
 extends layout
 
 block content
+    head
+        title Sign Up
     div(class='box')
         form(id='form', method='post', action='/create')
             label Username: 
@@ -42,3 +44,4 @@ block content
             input(type='submit', value='Sign Up!', class='signUp', id='button')
     script().
         var active = '#{session}';
+        var userLevel = '#{userLevel}'
