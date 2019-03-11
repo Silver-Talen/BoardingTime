@@ -1,13 +1,14 @@
 extends layout
-block content   
+block content
+    head
+        title Home
     each item in message
         div(class="messageBoard")
             div(class="msgHead")
-                p #{item.username}:
+                p User: #{item.username}
+                p Date: #{item.date}
                 div(class="message")
                     p #{item.message}
-                        div(class="date")
-                            p #{item.date}
     div(class="messageBoard")
         div(class="msgHead")
             p User Name: #{username}

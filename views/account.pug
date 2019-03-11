@@ -1,6 +1,8 @@
 extends layout
 
 block content
+    head
+        title Account
     div(class='box')
         img.image(src="https://api.adorable.io/avatars/face/"+avatar_eyes+"/"+avatar_nose+"/"+avatar_mouth+"/"+avatar_color alt="Omega" class='accountPic')
         p Username: #{username}

@@ -41,7 +41,7 @@ exports.index = (req, res) => {
     Message.find((err, message) => {
         if(err) return console.error(err);
         res.render('index', {
-            "title": 'Message List',
+            "title": 'Home',
             "message": message,
             "session": activeSession,
             "username": username
@@ -49,9 +49,13 @@ exports.index = (req, res) => {
     });
 }
 
+exports.createMessage = (req, res) => {
+    
+}
+
 exports.create = (req, res) => {
     res.render('create', {
-        "title": 'Add Person'
+        "title": 'Sign Up'
     });
 }
 
@@ -79,15 +83,11 @@ exports.createPerson = (req, res) => {
     res.redirect('/');
 }
 
-exports.createMessage = (req, res) => {
-    //take data of whoever is logged in
-}
-
 exports.edit = (req, res) => {
     var query = Account.findOne({username: username}, (err, user) => {
         if (err) return handleError(err);
         res.render('edit', {
-            title: 'Edit',
+            title: 'Account',
             "session": activeSession,
             user_id: user._id
         });
@@ -130,7 +130,7 @@ exports.admin = (req, res) => {
     Account.find((err, account) => {
         if(err) return console.error(err);
         res.render('admin', {
-            title: 'Account List',
+            title: 'Administration',
             account: account,
             "session": activeSession,
             "userLevel": userLevel
