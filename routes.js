@@ -156,13 +156,23 @@ exports.authenticateUser = (req, res) => {
         else{
             console.log("Not authenticated");
         }
-    })
+    });
     res.redirect('/');
 }
 
 exports.account = (req, res) => {
+    //var user = Account.findOne({username: username});
+    //user.exec(function (err, person) {
+    //    if (err) return handleError(err);
+    //    console.log("-------------------");
+    //    console.log(person.avatar_eyes);
+    //});
     res.render('account', {
-        title: 'Account',
+        title: 'Account',        
+        avatar_eyes: '',//user.avatar_eyes,
+        avatar_mouth: '',
+        avatar_nose: '',
+        avatar_color: ''
     });
 }
 
