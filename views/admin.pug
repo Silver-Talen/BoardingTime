@@ -1,6 +1,7 @@
 extends layout
 
 block content
+    script(src='frontend-admin.js')
     table(class="adminTable")
         tr
             th ID
@@ -20,4 +21,3 @@ block content
                 td #{item.userLevel}
                 td 
                     a(href="/delete/" + item.id) Delete
-        script(src='frontend-admin.js')

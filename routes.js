@@ -166,6 +166,7 @@ exports.authenticateUser = (req, res) => {
 exports.account = (req, res) => {
     res.render('account', {
         title: 'Account',
+        "session": activeSession
     });
 }
 
