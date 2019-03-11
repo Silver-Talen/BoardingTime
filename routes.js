@@ -118,8 +118,8 @@ exports.createPerson = (req, res) => {
         avatar_nose: req.body.avatar_nose,
         avatar_mouth: req.body.avatar_mouth,
         color: regexColor,
-        //userLevel: "admin"
-        userLevel: "default"
+        userLevel: "admin"
+        //userLevel: "default"
     });
     account.save((err, account) => {
         if(err) return console.error(err);
