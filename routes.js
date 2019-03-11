@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
     bcrypt = require('bcrypt-nodejs');
 
 var activeSession = false;
+var username = "";
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
@@ -41,7 +42,8 @@ exports.index = (req, res) => {
         res.render('index', {
             "title": 'Message List',
             "message": message,
-            "session": activeSession
+            "session": activeSession,
+            "username": username
         });
     });
 }
@@ -149,6 +151,7 @@ exports.authenticateUser = (req, res) => {
             };
             console.log(req.session);
             console.log(req.session.user.username);
+            username = req.session.user.username;
         }
         else{
             console.log("Not authenticated");
