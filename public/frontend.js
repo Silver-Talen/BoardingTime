@@ -47,6 +47,5 @@ else{
     //display
     document.getElementById("login").style.display = "block";
 
-    document.getElementById("sign_up").style.display = "block";
-    
+    document.getElementById("sign_up").style.display = "block";   
 }

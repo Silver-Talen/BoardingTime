@@ -9,7 +9,7 @@ block content
                 p Date: #{item.date}
                 div(class="message")
                     p #{item.message}
-                a(id="edit" href="/editMessage/" + item.id) Edit
+                a(id="edit" name="editButton" + item.username href="/editMessage/" + item.id) Edit
                 a(id="delete" href="/deleteMessage/" + item.id) Delete
     div(class="messageBoard")
         div(class="msgHead")
