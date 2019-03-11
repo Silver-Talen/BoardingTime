@@ -28,7 +28,6 @@ const accountSchema = mongoose.Schema({
 
 const messageSchema = mongoose.Schema({
     username: String,
-    color: String,
     date: Date,
     message: String
 });
