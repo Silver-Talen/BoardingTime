@@ -28,12 +28,10 @@ app.post('/', urlencodedParser, routes.createMessage);
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createPerson);
 
-app.get('/edit/:id', routes.edit);
+app.get('/edit', routes.edit);
 app.post('/edit/:id', urlencodedParser, routes.editPerson);
 
 app.get('/delete/:id', routes.delete);
-
-app.get('/details/:id', routes.details);
 
 app.get('/admin', routes.admin);
 

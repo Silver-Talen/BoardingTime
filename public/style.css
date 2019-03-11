@@ -101,7 +101,7 @@ select{
 .accountPic{
     float: left;
     display: block;
-    margin-left: 20px;
+    margin: 5px;
     width: 150px;
     height: 110px;
 }

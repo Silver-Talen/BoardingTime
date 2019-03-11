@@ -82,45 +82,45 @@ exports.createMessage = (req, res) => {
 }
 
 exports.edit = (req, res) => {
-    Account.findById(req.params.id, (err, account) => {
-        if(err) return console.error(err);
+    var query = Account.findOne({username: username}, (err, user) => {
+        if (err) return handleError(err);
         res.render('edit', {
             title: 'Edit',
-            account: account
+            "session": activeSession,
+            user_id: user._id
         });
     });
 }
 
 exports.editPerson = (req, res) => {
-    Account.findById(req.params.id, (err, account) => {
-        if(err) return console.error(err);
-        //edit avatar
-            //color / face parameters
-        //edit password
-        //edit username
-        account.save((err, account) => {
-            if(err) return console.error(err);
-            console.log(req.body.username + " updated");
-        });
+    var hash = bcrypt.hashSync(req.body.password);
+    var regexColor = req.body.color;
+    regexColor = regexColor.replace(/[#]/g, '');
+    var account = new Account({
+        username: req.body.username,
+        age: req.body.age,
+        password: hash,
+        userLevel: req.body.userLevel,
+        email: req.body.email,
+        avatar_eyes: req.body.avatar_eyes,
+        avatar_nose: req.body.avatar_nose,
+        avatar_mouth: req.body.avatar_mouth,
+        color: regexColor
     });
-    res.redirect('/');
+    account.save((err, account) => {
+        if(err) return console.error(err);
+        console.log(account.username + ' added')
+    });
+    Account.findByIdAndRemove(req.params.id, (err, account) => {
+        if(err) return console.error(err);
+        res.redirect('/');
+    });
 }
 
 exports.delete = (req, res) => {
     Account.findByIdAndRemove(req.params.id, (err, account) => {
         if(err) return console.error(err);
         res.redirect('/admin');
-    });
-}
-
-exports.details = (req, res) => {
-    Account.findById(req.params.id, (err, account) => {
-        if(err) return console.error(err);
-        res.render('details', {
-            title: 'Details',
-            id: req.params.id,
-            account: account
-        });
     });
 }
 
@@ -161,18 +161,21 @@ exports.authenticateUser = (req, res) => {
 }
 
 exports.account = (req, res) => {
-    //var user = Account.findOne({username: username});
-    //user.exec(function (err, person) {
-    //    if (err) return handleError(err);
-    //    console.log("-------------------");
-    //    console.log(person.avatar_eyes);
-    //});
-    res.render('account', {
-        title: 'Account',        
-        avatar_eyes: '',//user.avatar_eyes,
-        avatar_mouth: '',
-        avatar_nose: '',
-        avatar_color: ''
+    var query = Account.findOne({username: username}, (err, user) => {
+        if (err) return handleError(err);
+        console.log("-------------------");
+        console.log(user);
+        console.log(user.username);
+        res.render('account', {
+            title: 'Account',        
+            avatar_eyes: user.avatar_eyes,
+            avatar_mouth: user.avatar_mouth,
+            avatar_nose: user.avatar_nose,
+            avatar_color: user.color,
+            username: user.username,
+            age: user.age,
+            email: user.email
+        });
     });
 }
 

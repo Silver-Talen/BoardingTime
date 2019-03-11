@@ -2,9 +2,9 @@ extends layout
 
 block content
     div(class='box')
-        form(id='form', method='post', action='/edit')
+        form(id='form', method='post', action='/edit/'+user_id)
             label Username:
-            input(type='text', name='username')
+            input(type='text', name='username', value='asd')
             br
             label Email:
             input(type='text', name='email')
