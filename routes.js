@@ -42,7 +42,7 @@ exports.index = (req, res) => {
         if(err) return console.error(err);
         res.render('index', {
             "title": 'Home',
-            "message": message,
+            message: message,
             "session": activeSession,
             "username": username,
             "userLevel": userLevel
