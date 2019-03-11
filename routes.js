@@ -176,7 +176,8 @@ exports.account = (req, res) => {
             username: user.username,
             age: user.age,
             email: user.email,
-            "session": activeSession
+            "session": activeSession,
+            account: user
         });
     });
 }
@@ -186,6 +187,7 @@ exports.logout = (req, res) => {
     req.session.destroy((err) => {
         username = "";
         activeSession = false;
+        userLevel = "";
         if(err){
           console.log(err);
         }else{

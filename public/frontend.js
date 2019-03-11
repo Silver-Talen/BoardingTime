@@ -1,4 +1,15 @@
-if(active == "true"){
+if(active == "true" && admin == "true"){
+    //hide
+    document.getElementById("login").style.display = "none";
+
+    document.getElementById("sign_up").style.display = "none";
+
+    //display
+    document.getElementById("logout").style.display = "block";
+
+    document.getElementById("account").style.display = "block";
+}
+else if (active == "true"){
     //hide
     document.getElementById("login").style.display = "none";
 
