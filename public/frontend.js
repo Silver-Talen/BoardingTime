@@ -1,4 +1,4 @@
-if(active){
+if(active == true){
     //hide
     document.getElementById("login").disable = true;
     document.getElementById("login").hidden = true;

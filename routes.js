@@ -39,17 +39,17 @@ exports.index = (req, res) => {
     Message.find((err, message) => {
         if(err) return console.error(err);
         res.render('index', {
-            title: 'Message List',
-            message: message,
-            session: activeSession
+            "title": 'Message List',
+            "message": message,
+            "session": activeSession
         });
     });
 }
 
 exports.create = (req, res) => {
     res.render('create', {
-        title: 'Add Person',
-        session: activeSession
+        "title": 'Add Person',
+        "session": activeSession
     });
 }
 
