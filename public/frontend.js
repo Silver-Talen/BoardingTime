@@ -1,5 +1,3 @@
-console.log(active);
-
 if(active == "true"){
     //hide
     document.getElementById("login").style.display = "none";

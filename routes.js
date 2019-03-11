@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 var activeSession = false;
 var username = "";
+var userLevel = "";
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/data', {
@@ -50,8 +51,7 @@ exports.index = (req, res) => {
 
 exports.create = (req, res) => {
     res.render('create', {
-        "title": 'Add Person',
-        "session": activeSession
+        "title": 'Add Person'
     });
 }
 
@@ -68,7 +68,9 @@ exports.createPerson = (req, res) => {
         avatar_eyes: req.body.avatar_eyes,
         avatar_nose: req.body.avatar_nose,
         avatar_mouth: req.body.avatar_mouth,
-        color: regexColor
+        color: regexColor,
+        //userLevel: "admin"
+        userLevel: "default"
     });
     account.save((err, account) => {
         if(err) return console.error(err);
@@ -129,14 +131,17 @@ exports.admin = (req, res) => {
         if(err) return console.error(err);
         res.render('admin', {
             title: 'Account List',
-            account: account
+            account: account,
+            "session": activeSession,
+            "userLevel": userLevel
         });
     });
 }
 
 exports.login = (req, res) => {
     res.render('login', {
-        title: 'Login'
+        title: 'Login',
+        "session": activeSession
     });
 }
 
@@ -149,9 +154,8 @@ exports.authenticateUser = (req, res) => {
               isAuthenticated: true,
               username: req.body.username,
             };
-            console.log(req.session);
-            console.log(req.session.user.username);
             username = req.session.user.username;
+            userLevel = account[0].userLevel;
         }
         else{
             console.log("Not authenticated");

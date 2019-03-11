@@ -1,6 +1,10 @@
 extends layout
 
 block content
+    script().
+        var userLevel = '#{account[0].userLevel}';
+        var active = '#{session}';
+    script(src='frontend-admin.js')
     table(class="adminTable")
         tr
             th ID

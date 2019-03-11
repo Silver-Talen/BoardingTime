@@ -1,5 +1,13 @@
 extends layout
 block content   
+    each item in message
+        div(class="messageBoard")
+            div(class="msgHead")
+                p #{item.username}:
+                div(class="message")
+                    p #{item.message}
+                        div(class="date")
+                            p #{item.date}
     div(class="messageBoard")
         div(class="msgHead")
             p User Name: #{username}
@@ -8,7 +16,5 @@ block content
                     textarea(name="userPosts", cols="50", rows="5")
                     br
                     input(type='submit', value='Post!', class='signUp', id='button')
-    p
-        a(href="/create") Add new person
     script().
         var active = '#{session}';
