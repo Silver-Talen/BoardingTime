@@ -24,22 +24,21 @@ var urlencodedParser = bodyParser.urlencoded({
 
 app.get('/', routes.index);
 app.post('/', urlencodedParser, routes.createMessage);
+app.get('/deleteMessage/:id', routes.deleteMessage);
 
 app.get('/create', routes.create);
 app.post('/create', urlencodedParser, routes.createPerson);
-
-app.get('/edit', routes.edit);
-app.post('/edit/:id', urlencodedParser, routes.editPerson);
-
-app.get('/delete/:id', routes.delete);
-
-app.get('/admin', routes.admin);
-
-app.get('/account', routes.account);
 
 app.get('/login', routes.login);
 app.post('/login', urlencodedParser, routes.authenticateUser);
 
 app.get('/logout', routes.logout);
+
+app.get('/account', routes.account);
+app.get('/edit', routes.edit);
+app.post('/edit/:id', urlencodedParser, routes.editPerson);
+
+app.get('/admin', routes.admin);
+app.get('/delete/:id', routes.delete);
 
 app.listen(3000);

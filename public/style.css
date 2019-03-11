@@ -150,6 +150,10 @@ div.messageBoard{
     border-radius: 5px;
 }
 
+.message{
+    word-wrap: break-word;
+  }
+
 div.msgHead{
     margin: 5px;
 }
