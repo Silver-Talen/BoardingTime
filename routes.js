@@ -179,6 +179,7 @@ exports.account = (req, res) => {
 exports.logout = (req, res) => {
     console.log(req.session);
     req.session.destroy((err) => {
+        username = "";
         activeSession = false;
         if(err){
           console.log(err);

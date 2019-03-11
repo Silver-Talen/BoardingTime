@@ -1,28 +1,24 @@
-if(active == true){
-    //hide
-    document.getElementById("login").disable = true;
-    document.getElementById("login").hidden = true;
+console.log(active);
 
-    document.getElementById("sign_up").disable = true;
-    document.getElementById("sign_up").hidden = true;
+if(active == "true"){
+    //hide
+    document.getElementById("login").style.display = "none";
+
+    document.getElementById("sign_up").style.display = "none";
 
     //display
-    document.getElementById("logout").disable = false;
-    document.getElementById("logout").hidden = false;
+    document.getElementById("logout").style.display = "block";
 
-    document.getElementById("account").disable = false;
-    document.getElementById("account").hidden = false;
+    document.getElementById("account").style.display = "block";
 }
 else{
-    document.getElementById("login").disable = false;
-    document.getElementById("login").hidden = false;
+    //hide
+    document.getElementById("login").style.display = "block";
 
-    document.getElementById("sign_up").disable = false;
-    document.getElementById("sign_up").hidden = false;
-    
-    document.getElementById("logout").disable = true;
-    document.getElementById("logout").hidden = true;
+    document.getElementById("sign_up").style.display = "block";
 
-    document.getElementById("account").disable = true;
-    document.getElementById("account").hidden = true;
+    //display
+    document.getElementById("logout").style.display = "none";
+
+    document.getElementById("account").style.display = "none";
 }
