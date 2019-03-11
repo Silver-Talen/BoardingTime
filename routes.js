@@ -149,8 +149,6 @@ exports.authenticateUser = (req, res) => {
               isAuthenticated: true,
               username: req.body.username,
             };
-            console.log(req.session);
-            console.log(req.session.user.username);
             username = req.session.user.username;
         }
         else{
