@@ -37,6 +37,7 @@ app.post('/login', urlencodedParser, routes.authenticateUser);
 app.get('/logout', routes.logout);
 
 app.get('/account', routes.account);
+
 app.get('/edit', routes.edit);
 app.post('/edit/:id', urlencodedParser, routes.editPerson);
 

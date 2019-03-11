@@ -160,7 +160,7 @@ div.message{
     word-wrap: break-word;
 }
 
-#button:hover{
+.button:hover{
     cursor: pointer;
 }
 
