@@ -1,3 +1,4 @@
+console.log(messageData);
 if(active == "true" && userLevel == "admin"){
     //hide
     document.getElementById("login").style.display = "none";
@@ -13,10 +14,9 @@ if(active == "true" && userLevel == "admin"){
 
     document.getElementById("delete").style.display = "block";
 
-    document.getElementById("post").style.display = "block";
+    document.getElementById("post").style.display = "inline";
 }
 else if (active == "true"){
-    //hide
     document.getElementById("admin").style.display = "none";
     
     document.getElementById("login").style.display = "none";
@@ -28,7 +28,7 @@ else if (active == "true"){
     
     document.getElementById("logout").style.display = "block";
 
-    document.getElementById("post").style.display = "block";
+    document.getElementById("post").style.display = "inline";
 }
 else{
     //hide
