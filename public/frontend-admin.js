@@ -1,4 +1,4 @@
-if(account.userLevel == "admin" && account.userLevel != null){
+if(userLevel == "admin" && userLevel != null){
 
 }
 else {
