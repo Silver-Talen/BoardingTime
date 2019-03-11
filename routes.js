@@ -167,9 +167,6 @@ exports.authenticateUser = (req, res) => {
 exports.account = (req, res) => {
     var query = Account.findOne({username: username}, (err, user) => {
         if (err) return handleError(err);
-        console.log("-------------------");
-        console.log(user);
-        console.log(user.username);
         res.render('account', {
             title: 'Account',        
             avatar_eyes: user.avatar_eyes,
@@ -178,7 +175,8 @@ exports.account = (req, res) => {
             avatar_color: user.color,
             username: user.username,
             age: user.age,
-            email: user.email
+            email: user.email,
+            "session": activeSession
         });
     });
 }
