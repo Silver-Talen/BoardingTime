@@ -5,9 +5,9 @@ block content
     form(id='form', method='post', action='/editMessage/' + message_id)
         div(class="messageBoard")
             div(class="msgHead")
-                p User Name: #{username}
+                p User: #{username}
                 div(class="message")
                     form(id='form', method='post', action='/')
-                        textarea(name="userPosts", cols="60", rows="10")
+                        textarea(name="userPosts", cols="60", rows="10" value=message)
                         br
                         input(type='submit', value='Post!', class='signUp', id='button')
