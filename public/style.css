@@ -1,11 +1,12 @@
 html{
     background-color: #0e0b16;
-    font-family: 'Source Serif Pro', serif;
+    
 }
 
 nav ul{
     border-bottom: solid #E7DfDD 1px;
-    font-size: 2em;
+    font-family: AtelierOmega;
+    font-size: 2.5em;
     display: inline-block;
     width: 99%;
     margin: 2px;
@@ -161,4 +162,14 @@ div.message{
 
 #button:hover{
     cursor: pointer;
+}
+
+@font-face {
+    font-family: Alice;
+    src: url(alice-regular.ttf);
+}
+
+@font-face {
+    font-family: AtelierOmega;
+    src: url(atelier-omega.ttf);
 }
