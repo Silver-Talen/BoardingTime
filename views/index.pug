@@ -9,13 +9,14 @@ block content
                 p Date: #{item.date}
                 div(class="message")
                     p #{item.message}
+                a(href="/editMessage/" + item.id) Edit
                 a(href="/deleteMessage/" + item.id) Delete
     div(class="messageBoard")
         div(class="msgHead")
             p User Name: #{username}
             div(class="message")
                 form(id='form', method='post', action='/')
-                    textarea(name="userPosts", cols="50", rows="5")
+                    textarea(name="userPosts", cols="60", rows="10")
                     br
                     input(type='submit', value='Post!', class='signUp', id='button')
     script().
