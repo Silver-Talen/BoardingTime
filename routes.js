@@ -129,12 +129,13 @@ exports.delete = (req, res) => {
 
 exports.admin = (req, res) => {
     Account.find((err, account) => {
+        console.log(userLevel);
         if(err) return console.error(err);
         res.render('admin', {
             title: 'Account List',
             account: account,
             "session": activeSession,
-            "userLevel": userLevel
+            userLevel: userLevel
         });
     });
 }
@@ -166,7 +167,7 @@ exports.authenticateUser = (req, res) => {
 }
 
 exports.account = (req, res) => {
-    var query = Account.findOne({username: username}, (err, user) => {
+    Account.findOne({username: username}, (err, user) => {
         if (err) return handleError(err);
         res.render('account', {
             title: 'Account',        
