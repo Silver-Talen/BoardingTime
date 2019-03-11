@@ -44,7 +44,8 @@ exports.index = (req, res) => {
             "title": 'Message List',
             "message": message,
             "session": activeSession,
-            "username": username
+            "username": username,
+            "userLevel": userLevel
         });
     });
 }
