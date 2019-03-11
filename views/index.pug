@@ -11,7 +11,7 @@ block content
                     p #{item.message}
                 a(class="messageButtons" id="edit" name="editButton" + item.username href="/editMessage/" + item.id) Edit
                 a(class="messageButtons" id="delete" href="/deleteMessage/" + item.id) Delete
-    div(class="messageBoard")
+    div(class="newPost")
         div(class="msgHead")
             p User: #{username}
             div(class="message")
