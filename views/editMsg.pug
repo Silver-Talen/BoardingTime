@@ -2,12 +2,12 @@ extends layout
 block content
     head
         title Message-Edit
-    form(id='form', method='post', action='/editMessage/' + message_id)
+    form(id='form', method='post', action='/editMessage/' + message.id)
         div(class="messageBoard")
             div(class="msgHead")
                 p User: #{username}
                 div(class="message")
                     form(id='form', method='post', action='/')
-                        textarea(name="userPosts", cols="60", rows="10" value=message)
+                        textarea(name="userPosts", cols="60", rows="10") #{message.message}
                         br
                         input(type='submit', value='Post!', class='signUp', id='button')
