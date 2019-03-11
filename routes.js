@@ -148,6 +148,7 @@ exports.authenticateUser = (req, res) => {
               username: req.body.username,
             };
             console.log(req.session);
+            console.log(req.session.user.username);
         }
         else{
             console.log("Not authenticated");

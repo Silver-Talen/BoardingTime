@@ -22,6 +22,8 @@ var urlencodedParser = bodyParser.urlencoded({
     extended: true
 });
 
+var sessionUsername;
+
 app.get('/', routes.index);
 app.post('/', urlencodedParser, routes.createMessage);
 
