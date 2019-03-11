@@ -20,3 +20,5 @@ block content
                 td #{item.userLevel}
                 td 
                     a(href="/delete/" + item.id) Delete
+    script().
+        var active = '#{session}';
