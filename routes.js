@@ -49,7 +49,6 @@ exports.index = (req, res) => {
                 username: element.username
             }
             avatarData.push(data);
-            console.log(data);
         })
     });
     var messageData = [];

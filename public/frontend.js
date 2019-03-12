@@ -13,9 +13,12 @@ if(active == "true" && userLevel == "admin"){
 
     document.getElementById("post").style.display = "inline";
 
+    document.getElementById("delete").style.display = 'block'
+
     for(var i = 0; i < messages.length - 1; i++){
         document.getElementsByName("editButton" + username)[i].style.display = "block";
         document.getElementsByName("deleteButton" + username)[i].style.display = "block";
+        console.log(document.getElementsByName("deleteButton" + username)[i]);
     }
 }
 else if (active == "true"){
@@ -32,7 +35,7 @@ else if (active == "true"){
 
     document.getElementById("post").style.display = "inline";
 
-    for(var i = 0; i < messages.length; i++){
+    for(var i = 0; i < messages.length - 1; i++){
         document.getElementsByName("editButton" + username)[i].style.display = "block";
         document.getElementsByName("deleteButton" + username)[i].style.display = "block";
     }
@@ -43,15 +46,13 @@ else{
     
     document.getElementById("account").style.display = "none";
     
-    document.getElementById("logout").style.display = "none";  
-    
+    document.getElementById("logout").style.display = "none";
+
     document.getElementById("delete").style.display = "none";
 
     document.getElementById("edit").style.display = "none";
 
     document.getElementById("post").style.display = "none";
-
-    //document.getElementsByClassName("newPost").style.display = "none";
 
     //display
     document.getElementById("login").style.display = "block";
