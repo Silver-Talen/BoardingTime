@@ -10,7 +10,7 @@ block content
                 div(class="message")
                     p #{item.message}
                 a(class="messageButtons" id="edit" name="editButton" + item.username href="/editMessage/" + item.id) Edit
-                a(class="messageButtons" id="delete" href="/deleteMessage/" + item.id) Delete
+                a(class="messageButtons" id="delete" name="deleteButton" + item.username href="/deleteMessage/" + item.id) Delete
     div(class="newPost")
         div(class="msgHead")
             p User: #{username}
@@ -22,4 +22,5 @@ block content
     script().
         var active = '#{session}';
         var userLevel = '#{userLevel}';
-        var messages = '#{messageData}';
+        var message_user = '#{message_user}';
+        var messages = "!{messageData}"

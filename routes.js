@@ -38,15 +38,24 @@ var Account = mongoose.model('Account_Collection', accountSchema);
 var Message = mongoose.model('Message_Collection', messageSchema);
 
 exports.index = (req, res) => {
+    var messageData = [];
     Message.find((err, message) => {
+        message.forEach(element => {
+            var data = {
+                username: element.username,
+                date: element.date,
+                message: element.message
+            }
+            messageData.push(data);
+        });
         if(err) return console.error(err);
         res.render('index', {
             "title": 'Home',
             message: message,
+            "messageData": JSON.stringify(messageData),
             "session": activeSession,
             "username": username,
-            "userLevel": userLevel,
-            "messageData[]": message
+            "userLevel": userLevel
         });
     });
 }

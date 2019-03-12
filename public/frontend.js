@@ -1,3 +1,6 @@
+for(var i = 0; i < messages.length; i++){
+    console.log(messages);
+}
 if(active == "true" && userLevel == "admin"){
     //hide
     document.getElementById("login").style.display = "none";
