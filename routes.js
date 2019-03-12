@@ -209,8 +209,10 @@ exports.login = (req, res) => {
 }
 
 exports.authenticateUser = (req, res) => {
-    try {
-        Account.find({username: req.body.username}, (err, account) => {
+    if(req.body.username != null){
+
+        try {
+            Account.find({username: req.body.username}, (err, account) => {
             if(err) console.error(err);
             if(req.body.username==account[0].username && bcrypt.compareSync(req.body.password, account[0].password)){
                 activeSession = true;
@@ -225,10 +227,11 @@ exports.authenticateUser = (req, res) => {
                 console.log("Not authenticated");
             }
         });
-        res.redirect('/');
-    } catch (error) {
-        res.redirect('/');
-        alert("Gage EEEEE Boy couldn't find your username or password.");
+            res.redirect('/');
+        } catch (error) {
+            res.redirect('/');
+            alert("Gage EEEEE Boy couldn't find your username or password.");
+        }
     }
 }
 

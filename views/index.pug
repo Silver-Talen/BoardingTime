@@ -21,6 +21,7 @@ block content
                     input(type='submit', value='Post!', class='signUp button', id='post')
     script().
         var active = '#{session}';
+        var username = '#{username}';
         var userLevel = '#{userLevel}';
         var message_user = '#{message_user}';
-        var messages = "!{messageData}"
+        var messages = !{messageData};

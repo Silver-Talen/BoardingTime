@@ -191,3 +191,10 @@ div.newPost{
     font-family: AntiqueQuest;
     src: url(antique-quest-st.ttf);
 }
+
+#edit{
+    display: none;
+}
+#delete{
+    display: none;
+}
