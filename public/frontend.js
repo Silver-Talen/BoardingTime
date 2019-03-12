@@ -48,3 +48,5 @@ else{
 
     document.getElementById("sign_up").style.display = "block";   
 }
+
+console.log(message_user[0]);

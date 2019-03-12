@@ -43,10 +43,12 @@ exports.index = (req, res) => {
         res.render('index', {
             "title": 'Home',
             message: message,
+            message_user: message.username,
+            message_date: message.date,
+            messageText: message.message,
             "session": activeSession,
             "username": username,
-            "userLevel": userLevel,
-            "messageData[]": message
+            "userLevel": userLevel
         });
     });
 }
