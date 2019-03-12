@@ -45,7 +45,8 @@ exports.index = (req, res) => {
             message: message,
             "session": activeSession,
             "username": username,
-            "userLevel": userLevel
+            "userLevel": userLevel,
+            "messageData[]": message
         });
     });
 }
@@ -118,8 +119,8 @@ exports.createPerson = (req, res) => {
         avatar_nose: req.body.avatar_nose,
         avatar_mouth: req.body.avatar_mouth,
         color: regexColor,
-        //userLevel: "admin"
-        userLevel: "default"
+        userLevel: "admin"
+        //userLevel: "default"
     });
     account.save((err, account) => {
         if(err) return console.error(err);
@@ -193,7 +194,8 @@ exports.admin = (req, res) => {
 exports.login = (req, res) => {
     res.render('login', {
         title: 'Login',
-        "session": activeSession
+        "session": activeSession,
+        userLevel: userLevel
     });
 }
 
@@ -234,7 +236,8 @@ exports.account = (req, res) => {
             age: user.age,
             email: user.email,
             "session": activeSession,
-            account: user
+            account: user,
+            userLevel: userLevel
         });
     });
 }
@@ -254,7 +257,7 @@ exports.logout = (req, res) => {
       });
 }
 
-exports.checkAuth = function(req, res, next) {
+exports.checkAuth = (req, res, next) => {
     if(req.session.user && req.session.user.isAuthenticated){
       next();
     }else{
