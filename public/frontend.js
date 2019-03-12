@@ -1,3 +1,6 @@
+for(var i = 0; i < messages.length; i++){
+    console.log(messages);
+}
 if(active == "true" && userLevel == "admin"){
     //hide
     document.getElementById("login").style.display = "none";
@@ -48,5 +51,3 @@ else{
 
     document.getElementById("sign_up").style.display = "block";   
 }
-
-console.log(message_user[0]);
