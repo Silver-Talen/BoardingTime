@@ -228,7 +228,6 @@ exports.login = (req, res) => {
 exports.authenticateUser = (req, res) => {
     if(req.body.username !== null || req.body.username != ""){
         Account.find({username: req.body.username}, (err, account) => {
-            console.log("hello");
             if(err) console.error(err);
             if(account.length){
                 if(req.body.username==account[0].username && bcrypt.compareSync(req.body.password, account[0].password)){
