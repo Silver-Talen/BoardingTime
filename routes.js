@@ -44,8 +44,7 @@ exports.index = (req, res) => {
             "title": 'Home',
             message: message,
             "session": activeSession,
-            "username": username,
-            "userLevel": userLevel
+            "username": username
         });
     });
 }
@@ -54,12 +53,12 @@ exports.createMessage = (req, res) => {
     var currentdate = new Date();
     var message = new Message({
         username: username,
-        date: currentdate.getDate() + "/"
-        + (currentdate.getMonth()+1)  + "/" 
-        + currentdate.getFullYear() + " @ "  
-        + currentdate.getHours() + ":"  
-        + currentdate.getMinutes() + ":" 
-        + currentdate.getSeconds(),
+        date: currentdate.getUTCFullYear() + "/" +
+        ("0" + (currentdate.getUTCMonth()+1)).slice(-2) + "/" +
+        ("0" + currentdate.getUTCDate()).slice(-2) + " " +
+        ("0" + currentdate.getUTCHours()).slice(-2) + ":" +
+        ("0" + currentdate.getUTCMinutes()).slice(-2) + ":" +
+        ("0" + currentdate.getUTCSeconds()).slice(-2),
         message: req.body.userPosts
     });
     message.save((err, message) => {

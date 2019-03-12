@@ -1,4 +1,3 @@
-console.log(messageUsers);
 if(active == "true" && userLevel == "admin"){
     //hide
     document.getElementById("login").style.display = "none";
@@ -43,6 +42,8 @@ else{
     document.getElementById("edit").style.display = "none";
 
     document.getElementById("post").style.display = "none";
+
+    //document.getElementsByClassName("newPost").style.display = "none";
 
     //display
     document.getElementById("login").style.display = "block";
