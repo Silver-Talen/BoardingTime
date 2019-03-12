@@ -116,10 +116,11 @@ exports.create = (req, res) => {
 }
 
 exports.createPerson = (req, res) => {
-    var hash = bcrypt.hashSync(req.body.password);
-    var regexColor = req.body.color;
-    regexColor = regexColor.replace(/[#]/g, '');
-    var account = new Account({
+    if(req.body.username !== undefined || req.body.username != "" || req.body.password !== undefined || req.body.password != ""){
+        var hash = bcrypt.hashSync(req.body.password);
+        var regexColor = req.body.color;
+        regexColor = regexColor.replace(/[#]/g, '');
+        var account = new Account({
         username: req.body.username,
         age: req.body.age,
         password: hash,
@@ -129,14 +130,15 @@ exports.createPerson = (req, res) => {
         avatar_nose: req.body.avatar_nose,
         avatar_mouth: req.body.avatar_mouth,
         color: regexColor,
-        userLevel: "admin"
-        //userLevel: "default"
+        //userLevel: "admin"
+        userLevel: "default"
     });
     account.save((err, account) => {
         if(err) return console.error(err);
         console.log(account.username + ' added')
     });
-    res.redirect('/');
+        res.redirect('/');
+    }
 }
 
 exports.edit = (req, res) => {
@@ -210,29 +212,32 @@ exports.login = (req, res) => {
 }
 
 exports.authenticateUser = (req, res) => {
-    if(req.body.username != null){
-
-        try {
-            Account.find({username: req.body.username}, (err, account) => {
+    if(req.body.username !== null || req.body.username != ""){
+        Account.find({username: req.body.username}, (err, account) => {
+            console.log("hello");
             if(err) console.error(err);
-            if(req.body.username==account[0].username && bcrypt.compareSync(req.body.password, account[0].password)){
-                activeSession = true;
-                req.session.user={
-                  isAuthenticated: true,
-                  username: req.body.username,
-                };
-                username = req.session.user.username;
-                userLevel = account[0].userLevel;
+            if(account.length){
+                if(req.body.username==account[0].username && bcrypt.compareSync(req.body.password, account[0].password)){
+                    activeSession = true;
+                    req.session.user={
+                        isAuthenticated: true,
+                        username: req.body.username,
+                    };
+                    username = req.session.user.username;
+                    userLevel = account[0].userLevel;
+                }
+                res.redirect('/');
             }
             else{
-                console.log("Not authenticated");
+                res.redirect("/login");
+                console.log("Not a valid user!");
             }
+            
         });
-            res.redirect('/');
-        } catch (error) {
-            res.redirect('/');
-            alert("Gage EEEEE Boy couldn't find your username or password.");
-        }
+    }
+    else{
+        res.redirect('/login');
+        //alert("Not a valid user!");
     }
 }
 
