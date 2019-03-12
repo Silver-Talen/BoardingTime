@@ -1,3 +1,9 @@
+window.onload = function() {
+    if(!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+}
 if(active == "true" && userLevel == "admin"){
     //hide
     document.getElementById("login").style.display = "none";
