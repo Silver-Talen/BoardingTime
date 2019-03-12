@@ -160,6 +160,16 @@ div.message{
     word-wrap: break-word;
 }
 
+.messages{
+    border: solid #E7DfDD 2px;
+    border-radius: 5px;
+    width: 550px;
+    height: 325px;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 div.newPost{
     min-width: 300px;
     min-height: 200px;
