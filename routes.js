@@ -118,8 +118,8 @@ exports.createPerson = (req, res) => {
         avatar_nose: req.body.avatar_nose,
         avatar_mouth: req.body.avatar_mouth,
         color: regexColor,
-        userLevel: "admin"
-        //userLevel: "default"
+        //userLevel: "admin"
+        userLevel: "default"
     });
     account.save((err, account) => {
         if(err) return console.error(err);
@@ -137,8 +137,8 @@ exports.edit = (req, res) => {
             "session": activeSession,
             user_id: user._id,
             avatar_eyes: user.avatar_eyes,
-            avatar_mouth: user.avatar_eyes,
-            avatar_nose: user.avatar_eyes,
+            avatar_nose: user.avatar_nose,
+            avatar_mouth: user.avatar_mouth,
             avatar_color: user.color,
             username: user.username,
             age: user.age,
@@ -156,9 +156,9 @@ exports.editPerson = (req, res) => {
         user.username = req.body.username;
         user.age = req.body.age;
         user.password = hash;
-        user.userLevel = req.body.userLevel;
         user.email = req.body.email;
         user.avatar_eyes = req.body.avatar_eyes;
+        console.log(user.avatar_eyes);
         user.avatar_nose = req.body.avatar_nose;
         user.avatar_mouth = req.body.avatar_mouth;
         user.color = regexColor;

@@ -1,4 +1,4 @@
-console.log(messageUsers);
+//console.log(messageUsers);
 if(active == "true" && userLevel == "admin"){
     //hide
     document.getElementById("login").style.display = "none";
