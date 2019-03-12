@@ -52,15 +52,16 @@ exports.index = (req, res) => {
 }
 
 exports.createMessage = (req, res) => {
-    var currentdate = new Date();
+    var currentDate = new Date();
+    var formattedDate = currentDate.getFullYear() + 
+    "-" + (currentDate.getMonth() + 1) + 
+    "-" + currentDate.getDate() + 
+    " " + currentDate.getHours() + 
+    ":" + currentDate.getMinutes() + 
+    ":" + currentDate.getSeconds();
     var message = new Message({
         username: username,
-        date: currentdate.getUTCFullYear() + "/" +
-        ("0" + (currentdate.getUTCMonth()+1)).slice(-2) + "/" +
-        ("0" + currentdate.getUTCDate()).slice(-2) + " " +
-        ("0" + currentdate.getUTCHours()).slice(-2) + ":" +
-        ("0" + currentdate.getUTCMinutes()).slice(-2) + ":" +
-        ("0" + currentdate.getUTCSeconds()).slice(-2),
+        date: formattedDate,
         message: req.body.userPosts
     });
     message.save((err, message) => {
