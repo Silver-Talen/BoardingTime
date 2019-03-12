@@ -13,7 +13,7 @@ if(active == "true" && userLevel == "admin"){
 
     document.getElementById("post").style.display = "inline";
 
-    for(var i = 0; i < messages.length; i++){
+    for(var i = 0; i < messages.length - 1; i++){
         document.getElementsByName("editButton" + username)[i].style.display = "block";
         document.getElementsByName("deleteButton" + username)[i].style.display = "block";
     }

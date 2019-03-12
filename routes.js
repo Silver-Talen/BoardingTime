@@ -38,6 +38,20 @@ var Account = mongoose.model('Account_Collection', accountSchema);
 var Message = mongoose.model('Message_Collection', messageSchema);
 
 exports.index = (req, res) => {
+    var avatarData = [];
+    var query = Account.find((err, account) => {
+        account.forEach(element => {
+            var data = {
+                eyes: element.avatar_eyes,
+                mouth: element.avatar_mouth,
+                nose: element.avatar_nose,
+                color: element.color,
+                username: element.username
+            }
+            avatarData.push(data);
+            console.log(data);
+        })
+    });
     var messageData = [];
     Message.find((err, message) => {
         message.forEach(element => {
@@ -53,6 +67,7 @@ exports.index = (req, res) => {
             "title": 'Home',
             message: message,
             "messageData": JSON.stringify(messageData),
+            avatarData: avatarData,
             "session": activeSession,
             "username": username,
             "userLevel": userLevel

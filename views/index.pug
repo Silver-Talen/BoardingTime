@@ -4,6 +4,9 @@ block content
         title Home
     each item in message
         div(class="messageBoard")
+            each avatar in avatarData
+                if item.username == avatar.username
+                    img.image(src="https://api.adorable.io/avatars/face/"+avatar.eyes+"/"+avatar.nose+"/"+avatar.mouth+"/"+avatar.color alt="Omega" class='accountPic')
             div(class="msgHead")
                 p User: #{item.username}
                 p Date: #{item.date}
