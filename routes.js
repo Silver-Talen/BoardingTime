@@ -61,15 +61,16 @@ exports.index = (req, res) => {
 }
 
 exports.createMessage = (req, res) => {
-    var currentdate = new Date();
+    var currentDate = new Date();
+    var formattedDate = currentDate.getFullYear() + 
+    "-" + (currentDate.getMonth() + 1) + 
+    "-" + currentDate.getDate() + 
+    " " + currentDate.getHours() + 
+    ":" + currentDate.getMinutes() + 
+    ":" + currentDate.getSeconds();
     var message = new Message({
         username: username,
-        date: currentdate.getDate() + "/"
-        + (currentdate.getMonth()+1)  + "/" 
-        + currentdate.getFullYear() + " @ "  
-        + currentdate.getHours() + ":"  
-        + currentdate.getMinutes() + ":" 
-        + currentdate.getSeconds(),
+        date: formattedDate,
         message: req.body.userPosts
     });
     message.save((err, message) => {

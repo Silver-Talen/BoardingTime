@@ -51,6 +51,8 @@ else{
 
     document.getElementById("post").style.display = "none";
 
+    //document.getElementsByClassName("newPost").style.display = "none";
+
     //display
     document.getElementById("login").style.display = "block";
 
